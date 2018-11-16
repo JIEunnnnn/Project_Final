@@ -6,6 +6,8 @@
     <CalendarView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/lay"></CalendarView>
+        android:id="@+id/cal1"></CalendarView>
+
+    <Dialog android:id="@+id/dia" />
 
 </LinearLayout>

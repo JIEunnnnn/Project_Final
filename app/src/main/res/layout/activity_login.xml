@@ -23,6 +23,14 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/nologin"
+        android:layout_width="383dp"
+        android:layout_height="43dp"
+        android:text="로그인없이 돌아다녀보기"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="3dp"></Button>
+
+    <Button
         android:id="@+id/loginButton"
         android:layout_width="354dp"
         android:layout_height="wrap_content"
