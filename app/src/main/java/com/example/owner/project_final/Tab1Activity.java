@@ -1,6 +1,7 @@
 package com.example.owner.project_final;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.widget.CalendarView;
 
 public class Tab1Activity extends MainActivity {
@@ -13,7 +14,14 @@ public class Tab1Activity extends MainActivity {
         setContentView(R.layout.tab1);
 
         CalendarView cal1 = (CalendarView)findViewById(R.id.lay);
-        
+
+        cal1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+
+            }
+        });
+
 
 
 
