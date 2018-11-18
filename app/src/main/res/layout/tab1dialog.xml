@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 기분"/>
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:text="행복"
+            android:id="@+id/chkhappy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <CheckBox
+            android:text="슬픔"
+            android:id="@+id/chksad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <CheckBox
+            android:text="분노"
+            android:id="@+id/chkanger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <CheckBox
+            android:text="즐거움"
+            android:id="@+id/chkjoy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <CheckBox
+            android:text="사랑"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chklove"/>
+
+
+        <CheckBox
+            android:text="마움"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chkhate"/>
+
+
+        <CheckBox
+            android:text="욕심"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chkgreed"/>
+
+
+        <CheckBox
+            android:text="우울"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chkgloom"/>
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="오늘의 일기" />
+
+    <EditText
+        android:layout_width="304dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:background="#7f7f7d"
+        android:hint="일기를 작성해주세요^^*" />
+
+
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#해쉬태그#" />
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <CheckBox
+            android:text="집밥"
+            android:id="@+id/chkhousefood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+        <CheckBox
+            android:text="패스트푸드"
+            android:id="@+id/chkfastfood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:text="배달"
+            android:id="@+id/chkdelivery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:text="기타"
+            android:id="@+id/chkotherfood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
