@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.owner.project_final">
-f
+    f
     <!-- gps를 통한 위치 파악 permission -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -17,7 +17,8 @@ f
         <!-- Google Maps API -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCy58b-slKn-lA_ynCel2CL_Uv2Wsxovgs"/>
+            android:value="AIzaSyCy58b-slKn-lA_ynCel2CL_Uv2Wsxovgs" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +37,10 @@ f
             android:label="탭3 액티비티" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".FirstActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Fragment_First" />
+        <activity android:name=".Fragment_Second" />
+        <activity android:name=".Fragment_Third"></activity>
     </application>
 
 </manifest>

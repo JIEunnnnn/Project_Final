@@ -1,5 +1,9 @@
 package com.example.owner.project_final;
 
+/** ViewPager - Fragment
+ *  TabHost (Failed)
+ */
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

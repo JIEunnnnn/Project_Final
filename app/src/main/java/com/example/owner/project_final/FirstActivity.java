@@ -1,5 +1,9 @@
 package com.example.owner.project_final;
 
+/** ViewPager - Fragment
+ *  TabHost (Failed)
+ */
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -11,8 +15,6 @@ public class FirstActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-
-
 
         EditText idText = (EditText)findViewById(R.id.idText);
         EditText passwordText = (EditText)findViewById(R.id.passwordText);
