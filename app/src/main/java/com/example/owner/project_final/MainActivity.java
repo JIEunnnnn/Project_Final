@@ -2,8 +2,17 @@ package com.example.owner.project_final;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TabHost;
+import android.widget.Toolbar;
 
 public class MainActivity extends TabActivity  {
 
@@ -47,8 +56,28 @@ public class MainActivity extends TabActivity  {
                 .setContent(new Intent(this, Tab2Activity.class)));
         tabhost.addTab(tabhost.newTabSpec("board").setIndicator("게시판")
                 .setContent(new Intent(this, Tab3Activity.class)));*/
+/*
+        Resources resources = getResources();
+        TabHost tabHost = getTabHost();
+        TabHost.TabSpec spec1, spec2, spec3;
+        Intent intent;
 
+        intent = new Intent().setClass(this, Tab1Activity.class);
+        intent = new Intent().setClass(this, Tab2Activity.class);
+        intent = new Intent().setClass(this, Tab3Activity.class);
 
+        spec1 = tabHost.newTabSpec("read").setIndicator("오늘하루");
+        spec2 = tabHost.newTabSpec("location").setIndicator("위치");
+        spec3 = tabHost.newTabSpec("board").setIndicator("게시판");
+
+        spec1.setContent(intent);
+        spec2.setContent(intent);
+        spec3.setContent(intent);
+
+        tabHost.addTab(spec1);
+        tabHost.addTab(spec2);
+        tabHost.addTab(spec3);
+*/
     }
 
 }

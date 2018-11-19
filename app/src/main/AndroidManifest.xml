@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.owner.project_final">
+f
+    <!-- gps를 통한 위치 파악 permission -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- Tab 2 : android:allowBackup 값을 true->false로 수정 -->
     <application
