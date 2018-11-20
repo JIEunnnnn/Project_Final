@@ -2,6 +2,7 @@ package com.example.owner.project_final;
 
 /** ViewPager - Fragment */
 
+import android.annotation.SuppressLint;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             super(fragmentManager);
         }
+        @SuppressLint("ResourceAsColor")
         public android.support.v4.app.Fragment getItem(int position){
 
             switch (position){
