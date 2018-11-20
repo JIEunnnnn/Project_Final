@@ -15,7 +15,8 @@
     <color name="BrightAshBrown">#FBECEC</color>
 
     <!-- 실제 사용할 색상 -->
-    <color name="LoginActivity_Background">#FBECEC</color>
+    <color name="LoginActivity_Background">#FAF0E6</color>
     <color name="ViewPager_Tab_Button_Background">#362727</color>
     <color name="ViewPager_Tab_Button_Text">#C2B3B3</color>
+
 </resources>
