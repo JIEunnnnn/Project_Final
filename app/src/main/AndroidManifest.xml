@@ -1,46 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.owner.project_final">
-    f
-    <!-- gps를 통한 위치 파악 permission -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <!-- Tab 2 : android:allowBackup 값을 true->false로 수정 -->
     <application
-        android:allowBackup="false"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!-- Google Maps API -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCy58b-slKn-lA_ynCel2CL_Uv2Wsxovgs" />
-
-        <activity android:name=".LoginActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Tab1Activity"
-            android:label="탭1 액티비티" />
-        <activity
-            android:name=".Tab2Activity"
-            android:label="탭2 액티비티" />
-        <activity
-            android:name=".Tab3Activity"
-            android:label="탭3 액티비티" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".FirstActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Fragment_First" />
-        <activity android:name=".Fragment_Second" />
-        <activity android:name=".Fragment_Third"></activity>
+        <activity android:name=".Tab1Activity" android:label="탭1 액티비티"></activity>
+        <activity android:name=".Tab2Activity" android:label="탭2 액티비티"></activity>
+        <activity android:name=".Tab3Activity" android:label="탭3 액티비티"></activity>
     </application>
 
 </manifest>

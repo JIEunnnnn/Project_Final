@@ -16,15 +16,15 @@ public class Tab1Activity extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab1);
 
-        CalendarView cal1 = (CalendarView)findViewById(R.id.cal1);
+       CalendarView cal1 = (CalendarView)findViewById(R.id.cal1);
 
 
-        cal1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+       /* cal1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 
             }
-        });
+        });*/
 
 
 
