@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends LoginActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

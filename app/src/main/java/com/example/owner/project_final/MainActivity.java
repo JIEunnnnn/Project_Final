@@ -1,9 +1,8 @@
 package com.example.owner.project_final;
 
-/** ViewPager - Fragment */
 
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
+
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,62 +10,52 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    ViewPager viewPager;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewPager=(ViewPager)findViewById(R.id.viewPager);
         Button btn_first=(Button)findViewById(R.id.btn_first);
+
         Button btn_second=(Button)findViewById(R.id.btn_second);
         Button btn_third=(Button)findViewById(R.id.btn_third);
 
-        viewPager.setAdapter(new pagerAdapter(getSupportFragmentManager()));
-        viewPager.setCurrentItem(0);
 
-        btn_first.setOnClickListener(movePageListener);
-        btn_first.setTag(0);
-        btn_second.setOnClickListener(movePageListener);
-        btn_second.setTag(1);
-        btn_third.setOnClickListener(movePageListener);
-        btn_third.setTag(2);
-    }
-
-    View.OnClickListener movePageListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            int tag=(int)v.getTag();
-            viewPager.setCurrentItem(tag);
-        }
-    };
-
-    private class pagerAdapter extends FragmentStatePagerAdapter{
-
-        public pagerAdapter(android.support.v4.app.FragmentManager fragmentManager){
-
-            super(fragmentManager);
-        }
-        public android.support.v4.app.Fragment getItem(int position){
-
-            switch (position){
-                case 0:
-                    return new Fragment_First();
-                case 1:
-                    return new Fragment_Second();
-                case 2:
-                    return new Fragment_Third();
-                default:
-                    return null;
+        btn_first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                   intent = new Intent().setClass( MainActivity.this,Tab1Activity.class );
+                   startActivity(intent);
+                overridePendingTransition(0, 0);
             }
-        }
+        });
 
-        @Override
-        public int getCount() {
-            return 3;
-        }
+        btn_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( MainActivity.this,Tab2Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+
+            }
+        });
+        btn_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( MainActivity.this,Tab3Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+
+
+
     }
+
+
 }
 
 
