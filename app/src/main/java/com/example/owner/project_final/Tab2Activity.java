@@ -62,6 +62,17 @@ public class Tab2Activity extends AppCompatActivity
         LocationListener,
         PlacesListener {
 
+    /*
+        https://webnautes.tistory.com/647
+        -> OnMapReadyCallback
+        https://webnautes.tistory.com/1011
+        -> GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener
+        https://webnautes.tistory.com/1080
+        -> PlacesListener
+     */
+
+
+    //https://webnautes.tistory.com/1011
     private GoogleApiClient mGoogleApiClient = null;
     private GoogleMap mGoogleMap = null;
     private Marker currentMarker = null;
@@ -84,15 +95,37 @@ public class Tab2Activity extends AppCompatActivity
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
             .setInterval(UPDATE_INTERVAL_MS)
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1080
     List<Marker> previous_marker = null;
+    //----------------------------------------------------------------------------------------------
 
     Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //https://webnautes.tistory.com/1011 부분으로 이동 <- setContentView(R.layout.activity_main);
+        //------------------------------------------------------------------------------------------
+
+        //GoogleMapsAPIExample01
+        //https://webnautes.tistory.com/647
+        /*
+            https://webnautes.tistory.com/1011ㅇ 부분과 중복
+            단, FragmentManager fragmentManager = getFragmentManager(); 부분 사용 없었음
+
+        FragmentManager fragmentManager = getFragmentManager();
+        MapFragment mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        */
+        //------------------------------------------------------------------------------------------
+
+        //https://webnautes.tistory.com/1011
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_tab2);
+        //------------------------------------------------------------------------------------------
 
         Button btn2_first=(Button)findViewById(R.id.btn2_first);
         Button btn2_second=(Button)findViewById(R.id.btn2_second);
@@ -126,9 +159,7 @@ public class Tab2Activity extends AppCompatActivity
             }
         });
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
-                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
+        //https://webnautes.tistory.com/1080
         previous_marker = new ArrayList<Marker>();
 
         Button restaurant_btn = (Button)findViewById(R.id.restaurant_btn);
@@ -183,10 +214,14 @@ public class Tab2Activity extends AppCompatActivity
 
         MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        //------------------------------------------------------------------------------------------
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        //GoogleMapsAPIExample01
+        //https://webnautes.tistory.com/647
         LatLng GACHON = new LatLng(37.4523915, 127.1307015);
 
         MarkerOptions markerOptions = new MarkerOptions();
@@ -197,6 +232,7 @@ public class Tab2Activity extends AppCompatActivity
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(GACHON));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
+        //------------------------------------------------------------------------------------------
 
         Log.d(TAG, "onMapReady : ");
 
@@ -240,8 +276,12 @@ public class Tab2Activity extends AppCompatActivity
 
             }
         });
+        //------------------------------------------------------------------------------------------
     }
 
+
+
+    //https://webnautes.tistory.com/1011
     @Override
     public void onResume() {
         super.onResume();
@@ -260,7 +300,9 @@ public class Tab2Activity extends AppCompatActivity
             }
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     private void startLocationUpdates() {
         if (!checkLocationServicesStatus()) {
             Log.d(TAG, "startLocationUpdates : call showDialogForLocationServiceSetting");
@@ -280,7 +322,9 @@ public class Tab2Activity extends AppCompatActivity
             mGoogleMap.setMyLocationEnabled(true);
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     private void stopLocationUpdates() {
 
         Log.d(TAG,"stopLocationUpdates : LocationServices.FusedLocationApi.removeLocationUpdates");
@@ -288,7 +332,9 @@ public class Tab2Activity extends AppCompatActivity
         LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, (com.google.android.gms.location.LocationListener) this);
         mRequestingLocationUpdates = false;
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
     public void onLocationChanged(Location location) {
         currentPosition = new LatLng(location.getLatitude(), location.getLongitude());
@@ -303,6 +349,9 @@ public class Tab2Activity extends AppCompatActivity
         mCurrentLocation = location;
     }
 
+    //----------------------------------------------------------------------------------------------
+
+    //https://webnautes.tistory.com/1011
     @Override
     protected void onStart() {
         if (mGoogleApiClient != null && mGoogleApiClient.isConnected() == false) {
@@ -311,7 +360,9 @@ public class Tab2Activity extends AppCompatActivity
         }
         super.onStart();
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
     protected void onStop() {
         if (mRequestingLocationUpdates) {
@@ -325,7 +376,9 @@ public class Tab2Activity extends AppCompatActivity
         }
         super.onStop();
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (mRequestingLocationUpdates == false) {
@@ -348,13 +401,17 @@ public class Tab2Activity extends AppCompatActivity
             }
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d(TAG, "onConnectionFailed");
         setDefaultLocation();
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
     public void onConnectionSuspended(int i) {
         Log.d(TAG, "onConnectionSuspended");
@@ -363,7 +420,9 @@ public class Tab2Activity extends AppCompatActivity
         else if (i == CAUSE_SERVICE_DISCONNECTED)
             Log.e(TAG, "onConnectionsSuspended() : Google Play services " + "connection lost. Cause : service disconnected");
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     public String getCurrentAddress(LatLng latlng) {
         //지오코더... GPS를 주소로 변환
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -389,14 +448,18 @@ public class Tab2Activity extends AppCompatActivity
             return address.getAddressLine(0).toString();
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     public boolean checkLocationServicesStatus() {
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     public void setCurrentLocation(Location location, String markerTitle, String markerSnippet) {
         mMoveMapByUser = false;
 
@@ -419,7 +482,9 @@ public class Tab2Activity extends AppCompatActivity
             mGoogleMap.moveCamera(cameraUpdate);
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     public void setDefaultLocation() {
         mMoveMapByUser = false;
 
@@ -440,7 +505,10 @@ public class Tab2Activity extends AppCompatActivity
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(DEFAULT_LOCATION, 15);
         mGoogleMap.moveCamera(cameraUpdate);
     }
+    //----------------------------------------------------------------------------------------------
 
+    //런타임 퍼미션 처리를 위한 메소드
+    //https://webnautes.tistory.com/1011
     @TargetApi(Build.VERSION_CODES.M)
     private void checkPermissions() {
         boolean fineLocationRationale = ActivityCompat.
@@ -460,7 +528,9 @@ public class Tab2Activity extends AppCompatActivity
             }
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION && grantResults.length >0) {
@@ -476,7 +546,9 @@ public class Tab2Activity extends AppCompatActivity
             }
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @TargetApi(Build.VERSION_CODES.M)
     private void showDialogForPermission(String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Tab2Activity.this);
@@ -500,7 +572,9 @@ public class Tab2Activity extends AppCompatActivity
 
         builder.create().show();
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     private void showDialogForPermissionSetting(String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(Tab2Activity.this);
         builder.setTitle("알림");
@@ -528,7 +602,10 @@ public class Tab2Activity extends AppCompatActivity
 
         builder.create().show();
     }
+    //----------------------------------------------------------------------------------------------
 
+    //여기부터는 GPS 활성화를 위한 메소드들
+    //https://webnautes.tistory.com/1011
     private void showDialogForLocationServiceSetting() {
         AlertDialog.Builder builder = new AlertDialog.Builder(Tab2Activity.this);
         builder.setTitle("위치 서비스 비활성화");
@@ -545,9 +622,11 @@ public class Tab2Activity extends AppCompatActivity
 
         builder.create().show();
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1011
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
@@ -567,19 +646,26 @@ public class Tab2Activity extends AppCompatActivity
                 break;
         }
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesFailure(PlacesException e) {
 
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesStart() {
 
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesSuccess(final List<Place> places) {
+
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -604,12 +690,16 @@ public class Tab2Activity extends AppCompatActivity
             }
         });
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesFinished() {
 
     }
+    //----------------------------------------------------------------------------------------------
 
+    //https://webnautes.tistory.com/1080
     public void showRestaurantInformation(LatLng location) {
         mGoogleMap.clear();
 
@@ -672,7 +762,6 @@ public class Tab2Activity extends AppCompatActivity
                 .language("ko", "KR")
                 .build()
                 .execute();
-
     }
 
     public void showConvenienceStoreInformation(LatLng location) {
@@ -690,5 +779,5 @@ public class Tab2Activity extends AppCompatActivity
                 .build()
                 .execute();
     }
-
+    //----------------------------------------------------------------------------------------------
 }
