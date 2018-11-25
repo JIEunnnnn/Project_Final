@@ -2,6 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.owner.project_final">
 
+    <!--
+         위치 정보 접근 허용
+            https://webnautes.tistory.com/1011 참조
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!--
+     PlacesAPI Exercise
+        https://webnautes.tistory.com/1080
+        android:allowBackup="true" -> android:allowBackup="false"
+    -->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -9,22 +20,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
 
-        </activity>
+        <!-- Google Maps API Key -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCy58b-slKn-lA_ynCel2CL_Uv2Wsxovgs" />
+
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".LoginActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Tab1Activity"></activity>
-
+        <activity android:name=".Tab1Activity" />
+        <activity android:name=".Tab3Activity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".Tab2Activity"></activity>
-        <activity android:name=".Tab3Activity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

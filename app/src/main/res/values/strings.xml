@@ -35,4 +35,11 @@
     <string name="confirmButton">확인</string>
     <string name="authButton">인증</string>
     <string name="authCanButton">취소</string>
+
+    <!-- Tab2Activity String Collection -->
+    <string name="restaurant">식사</string>
+    <string name="atm">ATM</string>
+    <string name="busStation">정류장</string>
+    <string name="cafe">카페</string>
+    <string name="convenienceStore">편의점</string>
 </resources>
