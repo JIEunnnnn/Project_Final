@@ -38,6 +38,11 @@
         <activity android:name=".Tab3Activity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Tab2Activity"></activity>
+        <activity android:name=".PurchaseActivity"></activity>
+        <activity android:name=".FoodActivity"></activity>
+        <activity android:name=".RoomActivity"></activity>
+        <activity android:name=".HobbyActivity"></activity>
+        <activity android:name=".MypageActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_first"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:background="@color/ViewPager_Tab_Button_Background"
+            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:text="@string/btn_first"/>
+        <Button
+            android:id="@+id/btn_second"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:background="@color/ViewPager_Tab_Button_Background"
+            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:text="@string/btn_second"/>
+        <Button
+            android:id="@+id/btn_third"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:background="@color/ViewPager_Tab_Button_Background"
+            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:text="@string/btn_third"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right">
+        <ImageButton
+            android:id="@+id/myButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerInside"
+            android:gravity="right"
+            android:background="#00ff0000"
+            app:srcCompat="@drawable/mypage" />
+
+    </LinearLayout>
+
+    <GridLayout
+
+
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:columnCount="2"
+        android:rowCount="2">
+
+        <Button
+            android:id="@+id/purchaseButton"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:background="#FFE400"
+            android:text="공동구매" />
+
+        <Button
+            android:id="@+id/foodButton"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:background="#FFE400"
+            android:text="음식배달" />
+
+        <Button
+            android:id="@+id/roomButton"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:background="#FFE400"
+            android:text="단기 방대여" />
+
+        <Button
+            android:id="@+id/hobbyButton"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:background="#FFE400"
+            android:text="취미공유" />
+
+
+    </GridLayout>
+
+
+
+
+</LinearLayout>
