@@ -24,9 +24,9 @@
         <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCy58b-slKn-lA_ynCel2CL_Uv2Wsxovgs"/>
+            android:value="AIzaSyCy58b-slKn-lA_ynCel2CL_Uv2Wsxovgs" />
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,12 +37,13 @@
         <activity android:name=".Tab1Activity" />
         <activity android:name=".Tab3Activity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Tab2Activity"></activity>
-        <activity android:name=".PurchaseActivity"></activity>
-        <activity android:name=".FoodActivity"></activity>
-        <activity android:name=".RoomActivity"></activity>
-        <activity android:name=".HobbyActivity"></activity>
-        <activity android:name=".MypageActivity"></activity>
+        <activity android:name=".Tab2Activity" />
+        <activity android:name=".PurchaseActivity" />
+        <activity android:name=".FoodActivity" />
+        <activity android:name=".RoomActivity" />
+        <activity android:name=".HobbyActivity" />
+        <activity android:name=".MypageActivity" />
+        <activity android:name=".WriteActivity"></activity>
     </application>
 
 </manifest>

@@ -46,10 +46,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right">
+
+        <ImageButton
+            android:id="@+id/writeButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:background="#00ff0000"
+            android:src="@drawable/icon_write"/>
+
         <ImageButton
             android:id="@+id/myButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="centerInside"
             android:gravity="right"
             android:background="#00ff0000"
@@ -57,10 +66,46 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="공지"
+            android:textAlignment="center" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/noticeButton"
+            android:layout_width="50dp"
+            android:layout_height="19dp"
+            android:layout_gravity="right"
+            android:background="#00ff0000"
+            android:text="더보기" />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="81dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/layout" />
+
+
     <GridLayout
 
-
-        android:layout_margin="50dp"
+        android:layout_margin="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -68,6 +113,7 @@
         android:rowCount="2">
 
         <Button
+            android:layout_marginRight="10dp"
             android:id="@+id/purchaseButton"
             android:layout_row="0"
             android:layout_column="0"
@@ -76,6 +122,7 @@
             android:text="공동구매" />
 
         <Button
+            android:layout_marginLeft="10dp"
             android:id="@+id/foodButton"
             android:layout_row="0"
             android:layout_column="1"
@@ -84,6 +131,8 @@
             android:text="음식배달" />
 
         <Button
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:id="@+id/roomButton"
             android:layout_row="1"
             android:layout_column="0"
@@ -92,6 +141,8 @@
             android:text="단기 방대여" />
 
         <Button
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/hobbyButton"
             android:layout_row="1"
             android:layout_column="1"
@@ -101,8 +152,6 @@
 
 
     </GridLayout>
-
-
 
 
 </LinearLayout>

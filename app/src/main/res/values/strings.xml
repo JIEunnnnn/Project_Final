@@ -42,4 +42,10 @@
     <string name="busStation">정류장</string>
     <string name="cafe">카페</string>
     <string name="convenienceStore">편의점</string>
+
+    <!-- WriteActivity String Collection -->
+    <string name="activityName">글쓰기</string>
+    <string name="title">제목</string>
+    <string name="subtitle">소제목</string>
+    <string name="content">내용을 입력하세요</string>
 </resources>

@@ -19,6 +19,8 @@ public class Tab3Activity extends MainActivity {
         final Button hobbyButton = (Button) findViewById(R.id.hobbyButton);
         final Button roomButton = (Button) findViewById(R.id.roomButton);
         final ImageButton myButton = (ImageButton) findViewById(R.id.myButton);
+        final ImageButton writeButton = (ImageButton) findViewById(R.id.writeButton);
+
 
 
         purchaseButton.setOnClickListener(new View.OnClickListener(){
@@ -63,6 +65,14 @@ public class Tab3Activity extends MainActivity {
             public void onClick(View v){
                 Intent intent5 = new Intent(Tab3Activity.this, MypageActivity.class);
                 startActivity(intent5);
+            }
+        });
+
+        writeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent6 = new Intent(Tab3Activity.this, WriteActivity.class);
+                startActivity(intent6);
             }
         });
 
