@@ -76,5 +76,38 @@ public class Tab3Activity extends MainActivity {
             }
         });
 
+        //------------------------------------------------------------------------------------------
+        Button btn3_first=(Button)findViewById(R.id.btn3_first);
+        Button btn3_second=(Button)findViewById(R.id.btn3_second);
+        Button btn3_third=(Button)findViewById(R.id.btn3_third);
+
+
+        btn3_first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab3Activity.this,Tab1Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btn3_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab3Activity.this,Tab2Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+
+            }
+        });
+        btn3_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab3Activity.this,Tab3Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
     }
 }
