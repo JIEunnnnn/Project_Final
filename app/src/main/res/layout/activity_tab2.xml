@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/linearlayout_tab2"
+        android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -55,110 +55,125 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
+        <ImageButton
             android:id="@+id/restaurant_btn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/ViewPager_Tab_Button_Text"
-            android:text="@string/restaurant"
+            android:padding="2dp"
+            android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
             android:textStyle="bold"
+            android:contentDescription="@string/restaurant"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/icon_restaurant" />
 
-        <Button
+        <ImageButton
             android:id="@+id/atm_btn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/ViewPager_Tab_Button_Text"
-            android:text="@string/atm"
+            android:padding="2dp"
+            android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
             android:textStyle="bold"
+            android:contentDescription="@string/atm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/restaurant_btn"
             app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/icon_atm" />
 
-        <Button
+        <ImageButton
             android:id="@+id/busStation_btn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/ViewPager_Tab_Button_Text"
-            android:text="@string/busStation"
+            android:padding="2dp"
+            android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
             android:textStyle="bold"
+            android:contentDescription="@string/busStation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/atm_btn"
             app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/icon_busstation" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cafe_btn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/ViewPager_Tab_Button_Text"
-            android:text="@string/cafe"
+            android:padding="2dp"
+            android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
             android:textStyle="bold"
+            android:contentDescription="@string/cafe"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/busStation_btn"
             app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/icon_cafe" />
 
-        <Button
+        <ImageButton
             android:id="@+id/convenienceStore_btn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/ViewPager_Tab_Button_Text"
-            android:text="@string/convenienceStore"
+            android:padding="2dp"
+            android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
             android:textStyle="bold"
+            android:contentDescription="@string/convenienceStore"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/cafe_btn"
             app:layout_constraintTop_toTopOf="@+id/map"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/icon_conveniencestore" />
 
     </android.support.constraint.ConstraintLayout>
 
