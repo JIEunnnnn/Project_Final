@@ -43,7 +43,8 @@
         <activity android:name=".RoomActivity" />
         <activity android:name=".HobbyActivity" />
         <activity android:name=".MypageActivity" />
-        <activity android:name=".WriteActivity"></activity>
+        <activity android:name=".WriteActivity" />
+        <activity android:name=".PurchaseMapActivity"></activity>
     </application>
 
 </manifest>

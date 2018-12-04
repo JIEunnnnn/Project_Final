@@ -29,7 +29,7 @@ public class Tab3Activity extends MainActivity {
 
                 //다음페이지로 화면을 전환
                 //화면 전환시 사용하는 클래스
-                Intent intent1 = new Intent(Tab3Activity.this, PurchaseActivity.class);
+                Intent intent1 = new Intent(Tab3Activity.this, PurchaseMapActivity.class);
                 //화면전환하기
                 startActivity(intent1);
             }
