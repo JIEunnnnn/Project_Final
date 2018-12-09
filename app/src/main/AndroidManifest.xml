@@ -7,10 +7,6 @@
             https://webnautes.tistory.com/1011 참조
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    //이미지 권한
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <!--
      PlacesAPI Exercise
@@ -47,8 +43,7 @@
         <activity android:name=".RoomActivity" />
         <activity android:name=".HobbyActivity" />
         <activity android:name=".MypageActivity" />
-        <activity android:name=".WriteActivity" />
-        <activity android:name=".FreeActivity"></activity>
+        <activity android:name=".WriteActivity"></activity>
     </application>
 
 </manifest>
