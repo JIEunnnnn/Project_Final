@@ -37,9 +37,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /*
         Button noLogin = (Button) findViewById(R.id.nologin);
 
         noLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Tab1Activity.class);
+                startActivity(intent);
+
+            }
+        });
+        */
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Tab1Activity.class);
