@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_first"
+            android:id="@+id/btn3_first"
             android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -22,7 +22,7 @@
             android:textColor="@color/ViewPager_Tab_Button_Text"
             android:text="@string/btn_first"/>
         <Button
-            android:id="@+id/btn_second"
+            android:id="@+id/btn3_second"
             android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -31,13 +31,13 @@
             android:textColor="@color/ViewPager_Tab_Button_Text"
             android:text="@string/btn_second"/>
         <Button
-            android:id="@+id/btn_third"
+            android:id="@+id/btn3_third"
             android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Background"
-            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:background="@color/ViewPager_Tab_Button_Text"
+            android:textColor="@color/ViewPager_Tab_Button_Background"
             android:text="@string/btn_third"/>
     </LinearLayout>
 
@@ -97,7 +97,7 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="81dp"
+        android:layout_height="80dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/layout" />
@@ -105,53 +105,89 @@
 
     <GridLayout
 
-        android:layout_margin="40dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="117dp"
         android:layout_gravity="center"
+        android:layout_margin="40dp"
         android:columnCount="2"
         android:rowCount="2">
 
         <Button
-            android:layout_marginRight="10dp"
             android:id="@+id/purchaseButton"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_columnWeight="1"
+            android:layout_marginRight="10dp"
             android:background="#FFE400"
             android:text="공동구매" />
 
         <Button
-            android:layout_marginLeft="10dp"
             android:id="@+id/foodButton"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_columnWeight="1"
+            android:layout_marginLeft="10dp"
             android:background="#FFE400"
             android:text="음식배달" />
 
         <Button
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
             android:id="@+id/roomButton"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:background="#FFE400"
             android:text="단기 방대여" />
 
         <Button
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
             android:id="@+id/hobbyButton"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:background="#FFE400"
             android:text="취미공유" />
 
 
     </GridLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="자유게시판"
+            android:textAlignment="center" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/freeButton"
+            android:layout_width="50dp"
+            android:layout_height="19dp"
+            android:layout_gravity="right"
+            android:background="#00ff0000"
+            android:text="더보기" />
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/layout" />
 
 
 </LinearLayout>

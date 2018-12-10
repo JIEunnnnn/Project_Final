@@ -29,7 +29,7 @@ public class Tab3Activity extends MainActivity {
 
                 //다음페이지로 화면을 전환
                 //화면 전환시 사용하는 클래스
-                Intent intent1 = new Intent(Tab3Activity.this, PurchaseActivity.class);
+                Intent intent1 = new Intent(Tab3Activity.this, PurchaseMapActivity.class);
                 //화면전환하기
                 startActivity(intent1);
             }
@@ -73,6 +73,39 @@ public class Tab3Activity extends MainActivity {
             public void onClick(View v){
                 Intent intent6 = new Intent(Tab3Activity.this, WriteActivity.class);
                 startActivity(intent6);
+            }
+        });
+
+        //------------------------------------------------------------------------------------------
+        Button btn3_first=(Button)findViewById(R.id.btn3_first);
+        Button btn3_second=(Button)findViewById(R.id.btn3_second);
+        Button btn3_third=(Button)findViewById(R.id.btn3_third);
+
+
+        btn3_first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab3Activity.this,Tab1Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btn3_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab3Activity.this,Tab2Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+
+            }
+        });
+        btn3_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab3Activity.this,Tab3Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
 

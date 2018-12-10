@@ -1,3 +1,4 @@
+
 package com.example.owner.project_final;
 
 import android.Manifest;
@@ -112,7 +113,7 @@ public class Tab2Activity extends AppCompatActivity
         //GoogleMapsAPIExample01
         //https://webnautes.tistory.com/647
         /*
-            https://webnautes.tistory.com/1011ㅇ 부분과 중복
+            https://webnautes.tistory.com/1011 부분과 중복
             단, FragmentManager fragmentManager = getFragmentManager(); 부분 사용 없었음
 
         FragmentManager fragmentManager = getFragmentManager();
