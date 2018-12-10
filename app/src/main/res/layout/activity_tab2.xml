@@ -18,8 +18,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Background"
-            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/textColorPrimary"
             android:text="@string/btn_first"/>
         <Button
             android:id="@+id/btn2_second"
@@ -27,8 +27,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Text"
-            android:textColor="@color/ViewPager_Tab_Button_Background"
+            android:background="@color/background"
+            android:textColor="@color/textColorPrimary"
             android:text="@string/btn_second"/>
         <Button
             android:id="@+id/btn2_third"
@@ -36,8 +36,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Background"
-            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/textColorPrimary"
             android:text="@string/btn_third"/>
     </LinearLayout>
 
@@ -65,7 +65,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/ViewPager_Tab_Button_Text"
+            android:background="@drawable/round_button_02"
             android:padding="2dp"
             android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
@@ -89,7 +89,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/ViewPager_Tab_Button_Text"
+            android:background="@drawable/round_button_02"
             android:padding="2dp"
             android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
@@ -113,7 +113,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/ViewPager_Tab_Button_Text"
+            android:background="@drawable/round_button_02"
             android:padding="2dp"
             android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
@@ -137,7 +137,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/ViewPager_Tab_Button_Text"
+            android:background="@drawable/round_button_02"
             android:padding="2dp"
             android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"
@@ -161,7 +161,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/ViewPager_Tab_Button_Text"
+            android:background="@drawable/round_button_02"
             android:padding="2dp"
             android:scaleType="centerInside"
             android:textColor="@color/ViewPager_Tab_Button_Background"

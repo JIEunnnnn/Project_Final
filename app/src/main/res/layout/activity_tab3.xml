@@ -18,8 +18,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Background"
-            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/textColorPrimary"
             android:text="@string/btn_first"/>
         <Button
             android:id="@+id/btn3_second"
@@ -27,8 +27,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Background"
-            android:textColor="@color/ViewPager_Tab_Button_Text"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/textColorPrimary"
             android:text="@string/btn_second"/>
         <Button
             android:id="@+id/btn3_third"
@@ -36,8 +36,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textStyle="bold"
-            android:background="@color/ViewPager_Tab_Button_Text"
-            android:textColor="@color/ViewPager_Tab_Button_Background"
+            android:background="@color/background"
+            android:textColor="@color/textColorPrimary"
             android:text="@string/btn_third"/>
     </LinearLayout>
 
@@ -118,7 +118,7 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_marginRight="10dp"
-            android:background="#FFE400"
+            android:background="@drawable/round_button_03"
             android:text="공동구매" />
 
         <Button
@@ -127,7 +127,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:layout_marginLeft="10dp"
-            android:background="#FFE400"
+            android:background="@drawable/round_button_03"
             android:text="음식배달" />
 
         <Button
@@ -137,7 +137,7 @@
             android:layout_columnWeight="1"
             android:layout_marginTop="20dp"
             android:layout_marginRight="10dp"
-            android:background="#FFE400"
+            android:background="@drawable/round_button_03"
             android:text="단기 방대여" />
 
         <Button
@@ -147,7 +147,7 @@
             android:layout_columnWeight="1"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:background="#FFE400"
+            android:background="@drawable/round_button_03"
             android:text="취미공유" />
 
 
