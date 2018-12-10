@@ -1,4 +1,3 @@
-
 package com.example.owner.project_final;
 
 import android.Manifest;
@@ -27,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -68,8 +68,6 @@ public class Tab2Activity extends AppCompatActivity
         -> OnMapReadyCallback
         https://webnautes.tistory.com/1011
         -> GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener
-        https://webnautes.tistory.com/1080
-        -> PlacesListener
      */
 
 
@@ -98,11 +96,10 @@ public class Tab2Activity extends AppCompatActivity
             .setFastestInterval(FASTEST_UPDATE_INTERVAL_MS);
     //----------------------------------------------------------------------------------------------
 
-    //https://webnautes.tistory.com/1080
     List<Marker> previous_marker = null;
-    //----------------------------------------------------------------------------------------------
 
     Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +112,6 @@ public class Tab2Activity extends AppCompatActivity
         /*
             https://webnautes.tistory.com/1011 부분과 중복
             단, FragmentManager fragmentManager = getFragmentManager(); 부분 사용 없었음
-
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment)fragmentManager.findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -126,8 +122,63 @@ public class Tab2Activity extends AppCompatActivity
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_tab2);
+
+        Log.d(TAG, "onCreate");
+        mActivity = this;
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+
+        MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         //------------------------------------------------------------------------------------------
 
+        previous_marker = new ArrayList<Marker>();
+
+        ImageButton restaurant_btn = (ImageButton) findViewById(R.id.restaurant_btn);
+        restaurant_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showRestaurantInformation(currentPosition);
+            }
+        });
+
+        ImageButton atm_btn = (ImageButton) findViewById(R.id.atm_btn);
+        atm_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showATMInformation(currentPosition);
+            }
+        });
+
+        ImageButton busStation_btn = (ImageButton) findViewById(R.id.busStation_btn);
+        busStation_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showBusStationInformation(currentPosition);
+            }
+        });
+
+        ImageButton cafe_btn = (ImageButton) findViewById(R.id.cafe_btn);
+        cafe_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCafeInformation(currentPosition);
+            }
+        });
+
+        ImageButton convenienceStore_btn = (ImageButton)findViewById(R.id.convenienceStore_btn);
+        convenienceStore_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showConvenienceStoreInformation(currentPosition);
+            }
+        });
+
+        //------------------------------------------------------------------------------------------
         Button btn2_first=(Button)findViewById(R.id.btn2_first);
         Button btn2_second=(Button)findViewById(R.id.btn2_second);
         Button btn2_third=(Button)findViewById(R.id.btn2_third);
@@ -159,63 +210,6 @@ public class Tab2Activity extends AppCompatActivity
                 overridePendingTransition(0, 0);
             }
         });
-
-        //https://webnautes.tistory.com/1080
-        previous_marker = new ArrayList<Marker>();
-
-        Button restaurant_btn = (Button)findViewById(R.id.restaurant_btn);
-        restaurant_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showRestaurantInformation(currentPosition);
-            }
-        });
-
-        Button atm_btn = (Button)findViewById(R.id.atm_btn);
-        atm_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showATMInformation(currentPosition);
-            }
-        });
-
-        Button busStation_btn = (Button)findViewById(R.id.busStation_btn);
-        busStation_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showBusStationInformation(currentPosition);
-            }
-        });
-
-        Button cafe_btn = (Button)findViewById(R.id.cafe_btn);
-        cafe_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCafeInformation(currentPosition);
-            }
-        });
-
-        Button convenienceStore_btn = (Button)findViewById(R.id.convenienceStore_btn);
-        convenienceStore_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showConvenienceStoreInformation(currentPosition);
-            }
-        });
-
-        //https://webnautes.tistory.com/1011
-        Log.d(TAG, "onCreate");
-        mActivity = this;
-
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(LocationServices.API)
-                .build();
-
-        MapFragment mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        //------------------------------------------------------------------------------------------
     }
 
     @Override
@@ -343,7 +337,7 @@ public class Tab2Activity extends AppCompatActivity
         Log.d(TAG, "onLocationChanged : ");
 
         String markerTitle = getCurrentAddress(currentPosition);
-        String markerSnippet = "위도 : " + String.valueOf(location.getLatitude()) + "경도 : " + String.valueOf(location.getLongitude());
+        String markerSnippet = "위도:" + String.valueOf(location.getLatitude()) + "경도:" + String.valueOf(location.getLongitude());
 
         //현재 위치에 마커 생성하고 이동
         setCurrentLocation(location, markerTitle, markerSnippet);
@@ -626,6 +620,7 @@ public class Tab2Activity extends AppCompatActivity
     //----------------------------------------------------------------------------------------------
 
     //https://webnautes.tistory.com/1011
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -647,26 +642,20 @@ public class Tab2Activity extends AppCompatActivity
                 break;
         }
     }
-    //----------------------------------------------------------------------------------------------
 
-    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesFailure(PlacesException e) {
 
     }
-    //----------------------------------------------------------------------------------------------
 
-    //https://webnautes.tistory.com/1080
+    //----------------------------------------------------------------------------------------------
     @Override
     public void onPlacesStart() {
 
     }
-    //----------------------------------------------------------------------------------------------
 
-    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesSuccess(final List<Place> places) {
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -691,16 +680,12 @@ public class Tab2Activity extends AppCompatActivity
             }
         });
     }
-    //----------------------------------------------------------------------------------------------
 
-    //https://webnautes.tistory.com/1080
     @Override
     public void onPlacesFinished() {
 
     }
-    //----------------------------------------------------------------------------------------------
 
-    //https://webnautes.tistory.com/1080
     public void showRestaurantInformation(LatLng location) {
         mGoogleMap.clear();
 
@@ -763,6 +748,7 @@ public class Tab2Activity extends AppCompatActivity
                 .language("ko", "KR")
                 .build()
                 .execute();
+
     }
 
     public void showConvenienceStoreInformation(LatLng location) {
@@ -780,5 +766,4 @@ public class Tab2Activity extends AppCompatActivity
                 .build()
                 .execute();
     }
-    //----------------------------------------------------------------------------------------------
 }

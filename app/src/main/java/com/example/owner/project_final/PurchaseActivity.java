@@ -20,7 +20,7 @@ public class PurchaseActivity extends AppCompatActivity {
             public void onClick(View view){
 
                 //이전 페이지로 화면전환
-                Intent intent = new Intent (PurchaseActivity.this, Tab3Activity.class);
+                Intent intent = new Intent (PurchaseActivity.this, PurchaseMapActivity.class);
 
                 startActivity(intent);
             }
