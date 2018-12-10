@@ -1,8 +1,11 @@
 package com.example.owner.project_final;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 
 public class Tab1Activity extends MainActivity {
@@ -26,7 +29,38 @@ public class Tab1Activity extends MainActivity {
             }
         });*/
 
+        //------------------------------------------------------------------------------------------
+        Button btn1_first=(Button)findViewById(R.id.btn1_first);
+        Button btn1_second=(Button)findViewById(R.id.btn1_second);
+        Button btn1_third=(Button)findViewById(R.id.btn1_third);
 
+
+        btn1_first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab1Activity.this,Tab1Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+
+        btn1_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab1Activity.this,Tab2Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+
+            }
+        });
+        btn1_third.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( Tab1Activity.this,Tab3Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
 
 
     }
