@@ -67,6 +67,7 @@ public class RegisterActivity extends LoginActivity {
             @Override
             public void onClick(View v) {
                 String key = fdRef.push().getKey(); // 키를생성하고 키 값을 가져온다.
+
                 String name = nameText.getText().toString();
                 String birth = birthText.getText().toString();
                 String id = idText.getText().toString();

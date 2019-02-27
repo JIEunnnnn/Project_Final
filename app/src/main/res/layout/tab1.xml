@@ -53,13 +53,6 @@
             android:layout_height="314dp"></CalendarView>
 
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/round_button_03"
-            android:textColor="@color/textColorPrimary"
-            android:text="오늘의 일기" />
 
     </LinearLayout>
 

@@ -123,6 +123,8 @@ public class Tab2Activity extends AppCompatActivity
                 WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_tab2);
 
+
+
         Log.d(TAG, "onCreate");
         mActivity = this;
 
