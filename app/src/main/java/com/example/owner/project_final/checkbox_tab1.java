@@ -12,12 +12,17 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +31,10 @@ public class checkbox_tab1 extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-
+    CollectionReference tab1Ref = db.collection("tab1"); // 회원들의 전체정보 collection, 그 중 하나정보 document
 
     // FirebaseDatabase fd;
     // DatabaseReference fdRef;
-
 
 
     CheckBox ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8,ch9,ch10,
@@ -48,6 +52,7 @@ public class checkbox_tab1 extends AppCompatActivity {
         Intent intent = getIntent();
        final String data = intent.getExtras().getString("today");
        // tab1Activity에서 가져온 날짜데이터
+
 
 
 
@@ -81,6 +86,89 @@ public class checkbox_tab1 extends AppCompatActivity {
 
        //  fd = FirebaseDatabase.getInstance();
         // fdRef = fd.getReference("tab1");
+
+
+        DocumentReference Doctab1 = db.collection("tab1").document(data); // 캘린더에서 선택날 날짜에 대한 정보들을 조회!
+
+        Doctab1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        System.out.println("성공"+document.getData());
+                        Boolean b1 = document.getBoolean("ch1");
+                        Boolean b2 = document.getBoolean("ch2");
+                        Boolean b3 = document.getBoolean("ch3");
+                        Boolean b4 = document.getBoolean("ch4");
+                        Boolean b5 = document.getBoolean("ch5");
+                        Boolean b6 = document.getBoolean("ch6");
+                        Boolean b7 = document.getBoolean("ch7");
+                        Boolean b8 = document.getBoolean("ch8");
+                        Boolean b9 = document.getBoolean("ch9");
+                        Boolean b10 = document.getBoolean("ch10");
+                        Boolean b11 = document.getBoolean("ch11");
+                        Boolean b12 = document.getBoolean("ch12");
+                        Boolean b13 = document.getBoolean("ch13");
+                        Boolean b14 = document.getBoolean("ch14");
+                        Boolean b15 = document.getBoolean("ch15");
+                        Boolean b16 = document.getBoolean("ch16");
+                        Boolean b17 = document.getBoolean("ch17");
+                        Boolean b18 = document.getBoolean("ch18");
+                        Boolean b19 = document.getBoolean("ch19");
+                        Boolean b20 = document.getBoolean("ch20");
+                        Boolean b21 = document.getBoolean("ch21");
+                        Boolean b22 = document.getBoolean("ch22");
+                        Boolean b23 = document.getBoolean("ch23");
+                        Boolean b24 = document.getBoolean("ch24");
+
+                        String text = document.getString("text");
+
+                        ch1.setChecked(b1);
+                        ch2.setChecked(b2);
+                        ch3.setChecked(b3);
+                        ch4.setChecked(b4);
+                        ch5.setChecked(b5);
+                        ch6.setChecked(b6);
+                        ch7.setChecked(b7);
+                        ch8.setChecked(b8);
+                        ch9.setChecked(b9);
+                        ch10.setChecked(b10);
+                        ch11.setChecked(b11);
+                        ch12.setChecked(b12);
+                        ch13.setChecked(b13);
+                        ch14.setChecked(b14);
+                        ch15.setChecked(b15);
+                        ch16.setChecked(b16);
+                        ch17.setChecked(b17);
+                        ch18.setChecked(b18);
+                        ch19.setChecked(b19);
+                        ch20.setChecked(b20);
+                        ch21.setChecked(b21);
+                        ch22.setChecked(b22);
+                        ch23.setChecked(b23);
+                        ch24.setChecked(b24);
+
+                        tv.setText(text);
+
+
+
+
+
+                    } else {
+                        System.out.println("실패");
+                    }
+
+
+                }else{
+
+                    System.out.println("실패222");
+                }
+
+            }
+        });
+
+
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,7 +205,7 @@ public class checkbox_tab1 extends AppCompatActivity {
                 String text = tv.getText().toString();
                 Map<String, Object > postValues = new HashMap<>();
 
-               //  postValues.put("today", data);
+                postValues.put("today", data);
                 postValues.put("ch1", b1);
                 postValues.put("ch2", b2);
                 postValues.put("ch3", b3);
@@ -147,7 +235,8 @@ public class checkbox_tab1 extends AppCompatActivity {
 
                 postValues.put("text", text);
 
-               db.collection("users").document(data).set(postValues)
+
+               tab1Ref.document(data).set(postValues)
                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                            @Override
                            public void onSuccess(Void aVoid) {
