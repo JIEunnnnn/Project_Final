@@ -14,14 +14,15 @@ public class Tab3Activity extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab3);
 
-        final Button purchaseButton = (Button) findViewById(R.id.purchaseButton);
-        final Button foodButton = (Button) findViewById(R.id.foodButton);
-        final Button hobbyButton = (Button) findViewById(R.id.hobbyButton);
-        final Button roomButton = (Button) findViewById(R.id.roomButton);
+        final Button purchaseButton = (Button) findViewById(R.id.purchaseButton); // 공동구매
+        final Button foodButton = (Button) findViewById(R.id.foodButton); // 음식배달
+        final Button hobbyButton = (Button) findViewById(R.id.hobbyButton); // 취미공유
+        final Button roomButton = (Button) findViewById(R.id.roomButton); // 단기방대여
         final ImageButton myButton = (ImageButton) findViewById(R.id.myButton);
         final ImageButton writeButton = (ImageButton) findViewById(R.id.writeButton);
 
-
+        Button noticeButton  = (Button) findViewById(R.id.noticeButton);   // 공지버튼
+        final Button freeButton   = (Button)  findViewById(R.id.freeButton);    // 자유게시판 버튼
 
         purchaseButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,6 +74,22 @@ public class Tab3Activity extends MainActivity {
             public void onClick(View v){
                 Intent intent6 = new Intent(Tab3Activity.this, WriteActivity.class);
                 startActivity(intent6);
+            }
+        });
+
+        noticeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent7 = new Intent(Tab3Activity.this, NoticeActivity.class);
+                startActivity(intent7);
+            }
+        });
+
+        freeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent8 = new Intent(Tab3Activity.this, FreeActivity.class);
+                startActivity(intent8);
             }
         });
 

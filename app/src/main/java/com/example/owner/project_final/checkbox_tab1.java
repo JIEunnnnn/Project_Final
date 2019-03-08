@@ -96,6 +96,7 @@ public class checkbox_tab1 extends AppCompatActivity {
                 if(task.isSuccessful()){
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+
                         System.out.println("성공"+document.getData());
                         Boolean b1 = document.getBoolean("ch1");
                         Boolean b2 = document.getBoolean("ch2");
