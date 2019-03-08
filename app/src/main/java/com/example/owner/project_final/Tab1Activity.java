@@ -1,5 +1,6 @@
 package com.example.owner.project_final;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
@@ -38,7 +39,15 @@ public class Tab1Activity extends MainActivity {
     //Dialog dia;
     //------------------------------------------------------------------------------------------
 
+    // For Activity finish -------------------------------------------------------------------------
+    public static Activity tab1Activity;
 
+    LoginActivity loginact = (LoginActivity)LoginActivity.loginActivity;
+    MainActivity mainact = (MainActivity)MainActivity.mainActivity;
+    Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
+    Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
+    Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    //----------------------------------------------------------------------------------------------
 
     int year, month, date ;
 
@@ -49,6 +58,14 @@ public class Tab1Activity extends MainActivity {
 
        final CalendarView cal1 = (CalendarView)findViewById(R.id.cal1);
 
+        // For Activity finish ---------------------------------------------------------------------
+        tab1Activity = Tab1Activity.this;
+
+        loginact.finish();
+//        tab1act.finish();
+//        tab2act.finish();
+//        tab3act.finish();
+        // -----------------------------------------------------------------------------------------
 
        /* cal1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -57,7 +74,7 @@ public class Tab1Activity extends MainActivity {
             }
         });*/
 
-        //------------------------------------------------------------------------------------------
+        /*------------------------------------------------------------------------------------------
 
         Button btn1_first=(Button)findViewById(R.id.btn1_first);
         Button btn1_second=(Button)findViewById(R.id.btn1_second);
@@ -92,7 +109,7 @@ public class Tab1Activity extends MainActivity {
         });
 
 
-        //------------------------------------------------------------------------------------------
+        ------------------------------------------------------------------------------------------*/
 
 
 

@@ -20,6 +20,9 @@
     <string name="btn_first">오늘 하루</string>
     <string name="btn_second">위치</string>
     <string name="btn_third">게시판</string>
+    <string name="btn_fourth">무드등</string>
+    <string name="btn_fifth">음성변조</string>
+    <string name="btn_sixth">공지사항</string>
 
     <!-- RegisterActivity String Collection -->
     <string name="address">address</string>

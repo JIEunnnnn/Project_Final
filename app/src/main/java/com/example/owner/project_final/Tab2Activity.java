@@ -2,6 +2,7 @@ package com.example.owner.project_final;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.support.v7.app.AlertDialog;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
@@ -70,6 +71,15 @@ public class Tab2Activity extends AppCompatActivity
         -> GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener
      */
 
+    // For Activity finish -------------------------------------------------------------------------
+    public static Activity tab2Activity;
+
+    LoginActivity loginact = (LoginActivity)LoginActivity.loginActivity;
+    MainActivity mainact = (MainActivity)MainActivity.mainActivity;
+    Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
+    Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
+    Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    //----------------------------------------------------------------------------------------------
 
     //https://webnautes.tistory.com/1011
     private GoogleApiClient mGoogleApiClient = null;
@@ -117,6 +127,15 @@ public class Tab2Activity extends AppCompatActivity
         mapFragment.getMapAsync(this);
         */
         //------------------------------------------------------------------------------------------
+
+        // For Activity finish ---------------------------------------------------------------------
+        tab2Activity = Tab2Activity.this;
+
+        loginact.finish();
+//        tab1act.finish();
+//        tab2act.finish();
+//        tab3act.finish();
+        // -----------------------------------------------------------------------------------------
 
         //https://webnautes.tistory.com/1011
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
@@ -180,7 +199,7 @@ public class Tab2Activity extends AppCompatActivity
             }
         });
 
-        //------------------------------------------------------------------------------------------
+        /*------------------------------------------------------------------------------------------
         Button btn2_first=(Button)findViewById(R.id.btn2_first);
         Button btn2_second=(Button)findViewById(R.id.btn2_second);
         Button btn2_third=(Button)findViewById(R.id.btn2_third);
@@ -212,6 +231,8 @@ public class Tab2Activity extends AppCompatActivity
                 overridePendingTransition(0, 0);
             }
         });
+
+        ------------------------------------------------------------------------------------------*/
     }
 
     @Override

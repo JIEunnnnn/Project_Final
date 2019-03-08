@@ -1,5 +1,6 @@
 package com.example.owner.project_final;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,11 +9,29 @@ import android.widget.ImageButton;
 
 public class Tab3Activity extends MainActivity {
 
-    @Override
+    // For Activity finish -------------------------------------------------------------------------
+    public static Activity tab3Activity;
 
+    LoginActivity loginact = (LoginActivity)LoginActivity.loginActivity;
+    MainActivity mainact = (MainActivity)MainActivity.mainActivity;
+    Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
+    Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
+    Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    //----------------------------------------------------------------------------------------------
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab3);
+
+        // For Activity finish ---------------------------------------------------------------------
+        tab3Activity = Tab3Activity.this;
+
+        loginact.finish();
+//        tab1act.finish();
+//        tab2act.finish();
+//        tab3act.finish();
+        // -----------------------------------------------------------------------------------------
 
         final Button purchaseButton = (Button) findViewById(R.id.purchaseButton); // 공동구매
         final Button foodButton = (Button) findViewById(R.id.foodButton); // 음식배달
@@ -93,7 +112,7 @@ public class Tab3Activity extends MainActivity {
             }
         });
 
-        //------------------------------------------------------------------------------------------
+        /*------------------------------------------------------------------------------------------
         Button btn3_first=(Button)findViewById(R.id.btn3_first);
         Button btn3_second=(Button)findViewById(R.id.btn3_second);
         Button btn3_third=(Button)findViewById(R.id.btn3_third);
@@ -125,6 +144,7 @@ public class Tab3Activity extends MainActivity {
                 overridePendingTransition(0, 0);
             }
         });
+        ------------------------------------------------------------------------------------------*/
 
     }
 }
