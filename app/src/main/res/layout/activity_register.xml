@@ -61,11 +61,11 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/emailText"
+            android:id="@+id/addressText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/email"
+            android:hint="@string/address"
             android:inputType="textPersonName" />
 
         <LinearLayout
@@ -74,11 +74,11 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/addressText"
+                android:id="@+id/emailText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="@string/address"
+                android:hint="@string/email"
                 android:inputType="textPersonName"
                 android:layout_weight="1"/>
 

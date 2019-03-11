@@ -14,7 +14,7 @@
     <string name="loginButton">로그인</string>
     <string name="loginPasswordText">password</string>
     <string name="loginRegisterButton">회원가입</string>
-    <string name="text">로그인</string>
+    <string name="find_ID_PW">ID/PW 찾기</string>
 
     <!-- MainActivity String Collection -->
     <string name="btn_first">오늘 하루</string>

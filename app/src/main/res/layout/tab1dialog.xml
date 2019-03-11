@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000"
+    android:background="@color/colorPrimary"
     android:paddingLeft="16dp"
     android:paddingTop="16dp"
     android:paddingRight="16dp"
@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="354dp"
         android:layout_height="424dp"
-        android:background="@color/Yellow"
+        android:background="@drawable/round_square_01"
         android:orientation="vertical">
 
         <TextView
@@ -74,7 +74,7 @@
                 android:id="@+id/chkhate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="마움" />
+                android:text="미움" />
 
 
             <CheckBox
@@ -105,7 +105,7 @@
             android:layout_width="284dp"
             android:layout_height="62dp"
             android:layout_gravity="center"
-            android:background="#7f7f7d"
+            android:background="@drawable/round_square_02"
             android:hint="일기를 작성해주세요^^*"
             android:scrollbars="vertical" />
 
@@ -266,6 +266,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_button_02"
+                android:layout_marginHorizontal="10dp"
                 android:text="저장" />
 
             <Button
@@ -273,6 +274,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_button_02"
+                android:layout_marginHorizontal="10dp"
                 android:text="취소" />
         </LinearLayout>
 

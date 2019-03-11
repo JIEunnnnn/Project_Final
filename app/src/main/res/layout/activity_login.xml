@@ -76,7 +76,7 @@
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text"
+            android:text="@string/find_ID_PW"
             android:textAlignment="center"
             android:layout_weight="1" />
 
