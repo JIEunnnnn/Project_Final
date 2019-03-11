@@ -100,7 +100,10 @@ public class freeDetailActivity extends AppCompatActivity {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //   AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+                // FreeredeActivity
+                // String tag = "delete";
+                //Intent,putExtra("delete", tag);
 
                 // 비밀번호 입력하여 수정이나 삭제할수있게끔 하기!
 
@@ -112,6 +115,10 @@ public class freeDetailActivity extends AppCompatActivity {
         revise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // FreeredeActivity -> FreeDeleteActivity
+                // String tag ="revise";
+                //Intent,putExtra("revise", tag);
 
             }});
     }

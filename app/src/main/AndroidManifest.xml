@@ -56,6 +56,10 @@
         <activity android:name=".WriteActivity" />
         <activity android:name=".FreeActivity" />
         <activity android:name=".FreeWriteActivity" />
+        <activity android:name=".freeDetailActivity"/>
+        <activity android:name=".FreeredeActivity"/>
+        <activity android:name=".FreereviseActivity"/>
+
         <activity android:name=".NoticeActivity"/>
         <activity android:name=".MyFirebaseInstanceIDService" />
         <activity android:name=".MyFirebaseMessagingService"/>
