@@ -1,6 +1,8 @@
 package com.example.owner.project_final;
 
-
+/*
+다른 자바 파일에 툴바와 내비게이션 바와 관련된 것을 넣으면 앱 강제종료 당함
+ */
 
 import android.app.Activity;
 import android.content.Intent;
