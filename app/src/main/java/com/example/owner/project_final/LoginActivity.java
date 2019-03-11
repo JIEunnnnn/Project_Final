@@ -94,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
                     //로그인
-                    Intent intent = new Intent(LoginActivity.this,Tab1Activity.class);
-                    //Intent intent = new Intent(getApplicationContext(), Tab1Activity.class);
+                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                    //Intent intent = new Intent(getApplicationContext(), TActivity.class);
                     startActivity(intent);
                     finish();
 
