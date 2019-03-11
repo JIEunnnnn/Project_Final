@@ -51,13 +51,15 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-firestore:15.0.0'
 
-
     /* FCM메세지 */
     /* compile 'com.google.firebase:firebase-messaging:17.3.4'*/
 
-
 /* For Navigation Drawer */
-    implementation 'com.android.support:design:27.1.1'
+    //implementation 'com.android.support:design:27.1.1'
+
+    //implementation 'com.google.firebase:firebase-auth:16.0.1:15.0.0'
+    //implementation 'com.google.firebase:firebase-database:16.0.1:15.0.0'
+    implementation 'com.google.firebase:firebase-config:16.0.0'
 
 }
 

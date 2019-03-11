@@ -13,23 +13,23 @@
         android:layout_margin="16dp">
 
         <EditText
-            android:id="@+id/idText"
+            android:id="@+id/registerActivity_edittext_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/id"
+            android:hint="@string/email"
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/passwordText"
+            android:id="@+id/registerActivity_edittext_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPersonName" />
+            android:inputType="textPassword" />
 
         <EditText
-            android:id="@+id/cnameText"
+            android:id="@+id/registerActivity_edittext_cname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,7 +37,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/nameText"
+            android:id="@+id/registerActivity_edittext_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -45,7 +45,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/numberText"
+            android:id="@+id/registerActivity_edittext_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -53,115 +53,20 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/birthText"
+            android:id="@+id/registerActivity_edittext_birth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/birth"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/addressText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/address"
-            android:inputType="textPersonName" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/emailText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName"
-                android:layout_weight="1"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingVertical="2dp"
-                android:paddingLeft="2dp"
-                android:paddingRight="4dp"
-                android:layout_margin="2dp"
-                android:layout_weight="4" >
 
-                <Button
-                    android:id="@+id/authButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/authButton"
-                    android:background="@drawable/round_button_04"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/authText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/auth"
-                android:inputType="textPersonName"
-                android:layout_weight="1"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingVertical="2dp"
-                android:paddingLeft="4dp"
-                android:paddingRight="2dp"
-                android:layout_margin="2dp"
-                android:layout_weight="2">
-
-                <Button
-                    android:id="@+id/confirmButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/confirmButton"
-                    android:background="@drawable/round_button_04"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingVertical="2dp"
-                android:paddingLeft="2dp"
-                android:paddingRight="4dp"
-                android:layout_margin="2dp"
-                android:layout_weight="2">
-
-                <Button
-                    android:id="@+id/authcanButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/authCanButton"
-                    android:background="@drawable/round_button_04"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-        </LinearLayout>
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/registerActivity_button_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
