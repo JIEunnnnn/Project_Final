@@ -16,6 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
@@ -29,17 +31,17 @@ import java.util.Map;
 
 public class checkbox_tab1 extends AppCompatActivity {
 
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String email = user.getEmail(); // 접근자
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    CollectionReference tab1Ref = db.collection("tab1"); // 회원들의 전체정보 collection, 그 중 하나정보 document
-
-    // FirebaseDatabase fd;
-    // DatabaseReference fdRef;
+    CollectionReference tab1Ref = db.collection(email); // 회원들의 전체정보 collection, 그 중 하나정보 document
 
 
     CheckBox ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8,ch9,ch10,
             ch11,ch12,ch13,ch14,ch15,ch16,ch17,ch18,ch19,ch20,ch21,ch22,ch23,ch24;
-    TextView tv;
+    TextView tv ;
     Button btn1, btn2;
 
     Intent intent;
@@ -81,6 +83,9 @@ public class checkbox_tab1 extends AppCompatActivity {
         ch23 = (CheckBox) findViewById(R.id.chkbeauty);
         ch24 = (CheckBox)findViewById(R.id.chkexercise);
         tv=(TextView)findViewById(R.id.eddiary);
+
+
+
         btn1=(Button)findViewById(R.id.btn1);
         btn2=(Button)findViewById(R.id.btn2);
 
@@ -97,7 +102,12 @@ public class checkbox_tab1 extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
 
+
+
                         System.out.println("성공"+document.getData());
+
+
+
                         Boolean b1 = document.getBoolean("ch1");
                         Boolean b2 = document.getBoolean("ch2");
                         Boolean b3 = document.getBoolean("ch3");
@@ -125,6 +135,7 @@ public class checkbox_tab1 extends AppCompatActivity {
 
                         String text = document.getString("text");
 
+
                         ch1.setChecked(b1);
                         ch2.setChecked(b2);
                         ch3.setChecked(b3);
@@ -151,6 +162,8 @@ public class checkbox_tab1 extends AppCompatActivity {
                         ch24.setChecked(b24);
 
                         tv.setText(text);
+
+
 
 
 

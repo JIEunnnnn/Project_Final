@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,6 +49,9 @@ public class FreeActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ----------------------------------------------------------------------------------------------*/
 
+
+
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     // freeWrite부분에서 받은 데이터들을 documnetSnspshot으로 출력하기!
     CollectionReference colRef = db.collection("freeWrite");
@@ -58,7 +63,7 @@ public class FreeActivity extends AppCompatActivity {
     Button preButton, writeButton ;
 
 
-    String title, user, cont;
+    String title, userr, cont;
 
 
     @Override
@@ -81,7 +86,7 @@ public class FreeActivity extends AppCompatActivity {
                         System.out.println("성공"+document.getData());
 
                       //  title = document.getString("title");
-                        user = document.getString("user");
+                        userr = document.getString("user");
                         cont =   document.getString("contents");
 
                         dataArr.add(cont);
@@ -113,7 +118,7 @@ public class FreeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent3 = new Intent( FreeActivity.this , freeDetailActivity.class);
 
-                intent3.putExtra("user", user);
+                intent3.putExtra("user", userr);
                 startActivity(intent3);
             }
         });

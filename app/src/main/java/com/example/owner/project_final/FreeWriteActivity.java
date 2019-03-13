@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -23,7 +25,10 @@ import java.util.Map;
 
 public class FreeWriteActivity extends AppCompatActivity {
 
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser(); // 로그인인증 ㅇㅇ
 
+    String email = user.getEmail(); // 글 입력할때 이메일도 포함시키기 마이페이지에서 나타나게할때 이메일로통해 ㅇㅇ
+    String username = user.getDisplayName();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -64,7 +69,7 @@ public class FreeWriteActivity extends AppCompatActivity {
                 freepostValues.put("contents", contents);
                 freepostValues.put("password", password);
 
-                freeRef.document(user).set(freepostValues)
+                freeRef.document(email).set(freepostValues) // 문서를 이메일별로 저장 ㅇㅇ
 
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

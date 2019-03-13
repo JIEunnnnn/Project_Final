@@ -10,7 +10,7 @@ public class FreereviseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_freerevise);
+        setContentView(R.layout.activity_freerevise); // 자유게시판 수정
 
 
     }
