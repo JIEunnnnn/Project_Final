@@ -53,6 +53,7 @@ public class FreeActivity extends AppCompatActivity {
 
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     // freeWrite부분에서 받은 데이터들을 documnetSnspshot으로 출력하기!
     CollectionReference colRef = db.collection("freeWrite");
 
@@ -63,7 +64,7 @@ public class FreeActivity extends AppCompatActivity {
     Button preButton, writeButton ;
 
 
-    String title, userr, cont;
+    String title, username, cont;
 
 
     @Override
@@ -82,11 +83,13 @@ public class FreeActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful()){
+
+
                     for(QueryDocumentSnapshot document : task.getResult()){
                         System.out.println("성공"+document.getData());
 
                       //  title = document.getString("title");
-                        userr = document.getString("user");
+                        username = document.getString("user");
                         cont =   document.getString("contents");
 
                         dataArr.add(cont);
@@ -116,9 +119,10 @@ public class FreeActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 Intent intent3 = new Intent( FreeActivity.this , freeDetailActivity.class);
 
-                intent3.putExtra("user", userr);
+                intent3.putExtra("contents", cont);
                 startActivity(intent3);
             }
         });
