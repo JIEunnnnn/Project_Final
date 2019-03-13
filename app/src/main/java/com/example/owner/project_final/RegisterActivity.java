@@ -17,24 +17,36 @@ import android.widget.Toast;
 
 import com.example.owner.project_final.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends LoginActivity {
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    CollectionReference userRef = db.collection("user");
+
+
     private EditText email;
     private EditText password;
     private EditText name;
-    private EditText cname;
-    private EditText birth;
-    private EditText number;
+    private EditText address;
+
     private Button signup;
     //private String splash_background;
 
@@ -54,17 +66,16 @@ public class RegisterActivity extends LoginActivity {
         email = (EditText)findViewById(R.id.registerActivity_edittext_email);
         password = (EditText)findViewById(R.id.registerActivity_edittext_password);
         name = (EditText)findViewById(R.id.registerActivity_edittext_name);
+        address = (EditText)findViewById(R.id.registerActivity_edittext_address);
         signup = (Button)findViewById(R.id.registerActivity_button_signup);
-        cname = (EditText)findViewById(R.id.registerActivity_edittext_cname);
-        number = (EditText)findViewById(R.id.registerActivity_edittext_number);
-        birth = (EditText)findViewById(R.id.registerActivity_edittext_birth);
+
         //signup.setBackgroundColor(Color.parseColor(splash_background));
 
         signup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
 
-                if (email.getText().toString() == null || name.getText().toString() == null || password.getText().toString() == null || cname.getText().toString() == null || number.getText().toString() == null || birth.getText().toString() == null || name.getText().toString() == null) {
+                if (email.getText().toString() == null || name.getText().toString() == null || password.getText().toString() == null || address.getText().toString() == null ) {
                     return;
                 }
                 FirebaseAuth.getInstance()
@@ -72,12 +83,56 @@ public class RegisterActivity extends LoginActivity {
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                UserModel userModel = new UserModel();
+                                /*UserModel userModel = new UserModel();
+                                userModel.userEmail = email.getText().toString();
+                                userModel.userPassword = password.getText().toString();
                                 userModel.userName = name.getText().toString();
+                                userModel.userAddress = address.getText().toString();
+*/
+                                // String uid = task.getResult().getUser().getUid();
+                                // FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel);
 
-                                String uid = task.getResult().getUser().getUid();
-                                FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel);
+                                DocumentReference docRef = db.collection("users").document(email.getText().toString());
 
+                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            if(document.exists()){
+
+                                                Map<String, Object> userdata = new HashMap<>();
+
+                                                userdata.put("email", email.getText().toString());
+                                                userdata.put("password", password.getText().toString());
+                                                userdata.put("name",name.getText().toString());
+                                                userdata.put("address", address.getText().toString());
+
+                                                userRef.document(email.getText().toString()).set(userdata)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                System.out.println("성공");
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                System.out.println("실패");
+                                                            }
+                                                        });
+
+
+                                            }else{
+                                                System.out.println("document실패");
+                                            }
+
+                                        }
+                                        else{
+                                            System.out.println("task회원가입실패");
+                                        }
+                                    }
+                                });
                             }
                         });
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);

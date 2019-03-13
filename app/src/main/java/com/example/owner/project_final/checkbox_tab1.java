@@ -93,7 +93,7 @@ public class checkbox_tab1 extends AppCompatActivity {
         // fdRef = fd.getReference("tab1");
 
 
-        DocumentReference Doctab1 = db.collection("tab1").document(data); // 캘린더에서 선택날 날짜에 대한 정보들을 조회!
+        DocumentReference Doctab1 = db.collection(email).document(data); // 캘린더에서 선택날 날짜에 대한 정보들을 조회!
 
         Doctab1.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
