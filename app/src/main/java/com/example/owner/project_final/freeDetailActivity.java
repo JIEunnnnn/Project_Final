@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -21,8 +23,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class freeDetailActivity extends AppCompatActivity {
-
-
 
 
     EditText  titles , users, contents ;
@@ -48,12 +48,12 @@ public class freeDetailActivity extends AppCompatActivity {
         cancel = (Button)findViewById(R.id.cancelButton);
         delete = (Button) findViewById(R.id.deleteButton);
 
-        intent =getIntent();
+        intent = getIntent();
 
-        final String user = intent.getExtras().getString("user"); // freeActivity에서 받아온 사용자정보
+        final String cont = intent.getExtras().getString("contents"); // freeActivity에서 받아온 사용자정보
 
 
-        final DocumentReference docref = colrf.document(user);
+        final DocumentReference docref = colrf.document(cont);
 
         docref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
