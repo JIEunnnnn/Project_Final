@@ -35,11 +35,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity extends LoginActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    CollectionReference userRef = db.collection("user");
+   //  CollectionReference userRef = db.collection("users");
 
 
     private EditText email;
@@ -78,64 +78,101 @@ public class RegisterActivity extends LoginActivity {
                 if (email.getText().toString() == null || name.getText().toString() == null || password.getText().toString() == null || address.getText().toString() == null ) {
                     return;
                 }
-                FirebaseAuth.getInstance()
-                        .createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
+                else {
+
+
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
                                 /*UserModel userModel = new UserModel();
                                 userModel.userEmail = email.getText().toString();
                                 userModel.userPassword = password.getText().toString();
                                 userModel.userName = name.getText().toString();
                                 userModel.userAddress = address.getText().toString();
 */
-                                // String uid = task.getResult().getUser().getUid();
-                                // FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel);
-
-                                DocumentReference docRef = db.collection("users").document(email.getText().toString());
-
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if(document.exists()){
-
-                                                Map<String, Object> userdata = new HashMap<>();
-
-                                                userdata.put("email", email.getText().toString());
-                                                userdata.put("password", password.getText().toString());
-                                                userdata.put("name",name.getText().toString());
-                                                userdata.put("address", address.getText().toString());
-
-                                                userRef.document(email.getText().toString()).set(userdata)
-                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void aVoid) {
-                                                                System.out.println("성공");
-                                                            }
-                                                        })
-                                                        .addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                System.out.println("실패");
-                                                            }
-                                                        });
+                            // String uid = task.getResult().getUser().getUid();
+                            // FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel);
 
 
-                                            }else{
-                                                System.out.println("document실패");
-                                            }
+                        }
+                    });
 
+                    String emailtext =  email.getText().toString();
+                    String passwordtext = password.getText().toString();
+                    String nametext =  name.getText().toString();
+                    String addresstext = address.getText().toString();
+
+                    Map<String, Object> userdata = new HashMap<>();
+
+                    userdata.put("email", emailtext);
+                    userdata.put("password", passwordtext );
+                    userdata.put("name", nametext );
+                    userdata.put("address", addresstext );
+
+
+
+                    db.collection("user").document(emailtext)
+                            .set(userdata)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    System.out.println("성공");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    System.out.println("실패");
+                                }
+                            });
+
+
+                    // DocumentReference docRef = db.collection("users").document(email.getText().toString());
+
+
+                   /*
+                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+
+
+
+
+
+                                    userRef.document(emailtext).set(userdata)
+
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            System.out.println("성공");
                                         }
-                                        else{
-                                            System.out.println("task회원가입실패");
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            System.out.println("실패");
                                         }
-                                    }
-                                });
+                                    });
+
+
+                                } else {
+                                    System.out.println("document실패");
+                                }
+
+                            } else {
+                                System.out.println("task회원가입실패");
                             }
-                        });
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                        }
+                    });
+
+                     */
+
+
+                }
+
+                Intent intent = new Intent (getApplicationContext() ,LoginActivity.class);
                 startActivity(intent);
             }
 

@@ -217,6 +217,7 @@ public class checkbox_tab1 extends AppCompatActivity {
 
 
                 String text = tv.getText().toString();
+
                 Map<String, Object > postValues = new HashMap<>();
 
                 postValues.put("today", data);
