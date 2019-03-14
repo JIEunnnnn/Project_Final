@@ -101,7 +101,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/subtitle"
-                    android:inputType="text" />
+                    android:inputType="text" />z
 
 
                 <View

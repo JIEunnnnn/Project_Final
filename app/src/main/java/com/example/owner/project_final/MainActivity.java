@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
     Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
     Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    PurchaseActivity purchaseact = (PurchaseActivity)PurchaseActivity.purchaseActivity;
+    RoomActivity roomact = (RoomActivity)RoomActivity.roomActivity;
     //----------------------------------------------------------------------------------------------
 
     // For Toolbar ---------------------------------------------------------------------------------
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         // -----------------------------------------------------------------------------------------
 
         // For Toolbar -----------------------------------------------------------------------------
-        toolBar = (Toolbar)findViewById(R.id.toolbar);
+        toolBar = (Toolbar)findViewById(R.id.mainToolbar);
         setSupportActionBar(toolBar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         // -----------------------------------------------------------------------------------------
 
         // For Navigation Drawer -------------------------------------------------------------------
-        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);  //각 레이아웃의 가장 큰 DrawerLayout 이름
         navigationView = (NavigationView)findViewById(R.id.navigationView);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -95,29 +97,58 @@ public class MainActivity extends AppCompatActivity {
                 int id = item. getItemId();
 
                 switch (id) {
-                    case R.id.navi_tab1:
+                    case R.id.navi_tab1:    //오늘 하루
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( MainActivity.this,Tab1Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab2:
+                    case R.id.navi_tab2:    //위치 서비스
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( MainActivity.this,Tab2Activity.class );
+                        startActivity(intent);
                         break;
-                    case R.id.navi_tab3:
+                    case R.id.navi_tab3:    //게시판
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( MainActivity.this,Tab3Activity.class );
+                        startActivity(intent);
                         break;
-                    case R.id.navi_tab4:
+                    case R.id.navi_tab3_1:    //공동구매 게시판
+                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( MainActivity.this, PurchaseActivity.class );
+                        startActivity(intent);
+                        break;
+/*
+                    case R.id.navi_tab3_2:    //단기방대여 게시판
+                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( MainActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_3:    //음식주문 게시판
+                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( MainActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_4:    //취미여가 게시판
+                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( MainActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_5:    //자유게시판
+                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( MainActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab4:    //음성변조
+                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab5:    //공지사항
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.navi_tab5:
+                    case R.id.navi_tab6:    //마이페이지
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.navi_tab6:
-                        Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
-                        break;
-
+*/
                 }
 
                 return true;
@@ -244,7 +275,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
+        menuInflater.inflate(R.menu.menu, menu);    //각자에 맞는 R.menu. 파일 작성할 것
         return true;
     }
 
@@ -252,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);  //각자에 맞는 레이아웃의 가장 겉 DrawerLayout 이용할 것
 
         switch (item.getItemId()) {
             case R.id.action_settings:
@@ -265,6 +296,13 @@ public class MainActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.action_logout:
+                Toast.makeText(getApplicationContext(), "공동구매 로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent().setClass( MainActivity.this, LoginActivity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
                 return true;
 
             default:

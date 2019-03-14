@@ -1,134 +1,338 @@
 package com.example.owner.project_final;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class PurchaseActivity extends AppCompatActivity {
 
-    ArrayList<PurchaseList> purchaseListArrayList = new ArrayList<PurchaseList>();
+
+    Intent intent;
+
+    // For Activity finish -------------------------------------------------------------------------
+    public static Activity purchaseActivity;
+
+    LoginActivity loginact = (LoginActivity)LoginActivity.loginActivity;
+    MainActivity mainact = (MainActivity)MainActivity.mainActivity;
+    Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
+    Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
+    Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    PurchaseActivity purchaseact = (PurchaseActivity)PurchaseActivity.purchaseActivity;
+    RoomActivity roomact = (RoomActivity)RoomActivity.roomActivity;
+    //----------------------------------------------------------------------------------------------
+
+    // For Toolbar ---------------------------------------------------------------------------------
+    Toolbar toolBar;
+    //----------------------------------------------------------------------------------------------
+
+    // For Navigation Drawer -----------------------------------------------------------------------
+    NavigationView navigationView;
+    DrawerLayout drawerLayout;
+    // ---------------------------------------------------------------------------------------------
+
+    // For ListView --------------------------------------------------------------------------------
+    static ArrayList<String> items;
+    static ArrayAdapter adapter;
+    static ListView listView;
+    static int count, checked;
+    // ---------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase);
 
-        Button preButton = (Button)findViewById(R.id.pButton);
+        // For Activity finish ---------------------------------------------------------------------
+        purchaseActivity = PurchaseActivity.this;
+        // -----------------------------------------------------------------------------------------
 
-        preButton.setOnClickListener(new View.OnClickListener(){
+        // For Toolbar -----------------------------------------------------------------------------
+        toolBar = (Toolbar)findViewById(R.id.purchaseToolbar);
+        setSupportActionBar(toolBar);
+
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setTitle("공동구매 게시판");
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_24dp);
+
+        setSupportActionBar(toolBar);
+        // -----------------------------------------------------------------------------------------
+
+        // For Navigation Drawer -------------------------------------------------------------------
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_purchase);
+        navigationView = (NavigationView)findViewById(R.id.purchase_navigationView);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view){
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                item.setChecked(true);
+                drawerLayout.closeDrawers();
 
-                //이전 페이지로 화면전환
-                Intent intent = new Intent (PurchaseActivity.this, PurchaseMapActivity.class);
+                int id = item. getItemId();
 
-                startActivity(intent);
+                switch (id) {
+                    case R.id.navi_tab1:    //오늘 하루
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this,Tab1Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab2:    //위치 서비스
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this,Tab2Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3:    //게시판
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this,Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_1:    //공동구매 게시판
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this, PurchaseActivity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_2:    //단기방대여 게시판
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this, RoomActivity.class );
+                        startActivity(intent);
+                        break;
+/*
+                    case R.id.navi_tab3_3:    //음식주문 게시판
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_4:    //취미여가 게시판
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_5:    //자유게시판
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( PurchaseActivity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab4:    //음성변조
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab5:    //공지사항
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.navi_tab6:    //마이페이지
+                        Toast.makeText(PurchaseActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        break;
+*/
+                }
+
+                return true;
             }
+        });
+        // -----------------------------------------------------------------------------------------
 
+        // For purchaseBackBtn clicked -------------------------------------------------------------
+        Button purchaseBackBtn = (Button)findViewById(R.id.purchaseBackBtn);
+
+        purchaseBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent().setClass( PurchaseActivity.this,Tab3Activity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+        // -----------------------------------------------------------------------------------------
+
+        // For ListView ----------------------------------------------------------------------------
+        // 빈 데이터 리스트 생성.
+        items = new ArrayList<String>() ;
+        // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
+        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, items) ;
+
+        // listview 생성 및 adapter 지정.
+        listView = (ListView)findViewById(R.id.purchaseListView);    //해당 리스트뷰 이름
+        listView.setAdapter(adapter);
+
+        count = adapter.getCount();
+        checked = listView.getCheckedItemPosition();
+/*
+        // add button에 대한 이벤트 처리.
+        Button addButton = (Button)findViewById(R.id.action_purchase_write);
+        addButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                int count;
+                count = adapter.getCount();
+
+                // 아이템 추가.
+                items.add("LIST" + Integer.toString(count + 1));
+
+                // listview 갱신
+                adapter.notifyDataSetChanged();
+            }
         });
 
+        // modify button에 대한 이벤트 처리.
+        Button modifyButton = (Button)findViewById(R.id.action_purchase_modify) ;
+        modifyButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                int count, checked ;
+                count = adapter.getCount() ;
+
+                if (count > 0) {
+                    // 현재 선택된 아이템의 position 획득.
+                    checked = listView.getCheckedItemPosition();
+                    if (checked > -1 && checked < count) {
+                        // 아이템 수정
+                        items.set(checked, Integer.toString(checked+1) + "번 아이템 수정") ;
+
+                        // listview 갱신
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        }) ;
+
+        // delete button에 대한 이벤트 처리.
+        Button deleteButton = (Button)findViewById(R.id.action_purchase_erase) ;
+        deleteButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                int count, checked ;
+                count = adapter.getCount() ;
+
+                if (count > 0) {
+                    // 현재 선택된 아이템의 position 획득.
+                    checked = listView.getCheckedItemPosition();
+
+                    if (checked > -1 && checked < count) {
+                        // 아이템 삭제
+                        items.remove(checked) ;
+
+                        // listview 선택 초기화.
+                        listView.clearChoices();
+
+                        // listview 갱신.
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        }) ;
+        //------------------------------------------------------------------------------------------*/
+    }
+
+    //* For Toolbar ---------------------------------------------------------------------------------
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.post_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //return super.onOptionsItemSelected(item);
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_purchase);
+
+        // For ListView ----------------------------------------------------------------------------
+        //count = adapter.getCount();
+        //checked = listView.getCheckedItemPosition();
         //------------------------------------------------------------------------------------------
 
-        PurchaseList pl1 = new PurchaseList();
-        pl1.img = R.drawable.apple;
-        pl1.name = "사과";
-        pl1.tradeLocation = "가천대학교";
-        pl1.tradeDate = "2018.12.22";
-        purchaseListArrayList.add(pl1);
-        purchaseListArrayList.add(new PurchaseList(R.drawable.hotpack,"핫팩","태평초등학교","2018.12.27"));
-        purchaseListArrayList.add(new PurchaseList(R.drawable.tangerine,"귤","복정파출소","2018.12.23"));
+        switch (item.getItemId()) {
+            case R.id.action_mainpage:
+                Toast.makeText(getApplicationContext(), "공동구매 메인화면 이동 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent().setClass( PurchaseActivity.this, MainActivity.class );
+                startActivity(intent);
+                purchaseActivity.finish();
+                overridePendingTransition(0, 0);
+                return true;
 
-        // adapter
-        KakaoAdapter adapter = new KakaoAdapter(
-                getApplicationContext(), // 현재 화면의 제어권자
-                R.layout.purchaselistrow,             // 한행을 그려줄 layout
-                purchaseListArrayList);                     // 다량의 데이터
+            case R.id.action_refreshing:
+                Toast.makeText(getApplicationContext(), "새로고침 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent(PurchaseActivity.this, PurchaseActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                return true;
 
-        ListView lv = (ListView)findViewById(R.id.purchaseList);
-        lv.setAdapter(adapter);
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
 
-        // 이벤트 처리
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Log.d("test", "아이템클릭, postion : " + position +
-                        ", id : " + id);
-            }
-        });
+            case R.id.action_logout:
+                Toast.makeText(getApplicationContext(), "공동구매 로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent().setClass( PurchaseActivity.this, LoginActivity.class );
+                startActivity(intent);
+                purchaseActivity.finish();
+                overridePendingTransition(0, 0);
+                return true;
 
+            case R.id.action_write:
+                Toast.makeText(getApplicationContext(), "공동구매 글쓰기 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent().setClass( PurchaseActivity.this, PurchaseWriteActivity.class );
+                startActivity(intent);
+                purchaseActivity.finish();
+                overridePendingTransition(0, 0);
+
+                // 아이템 추가.
+                items.add("LIST" + Integer.toString(count + 1));
+
+                // listview 갱신
+                adapter.notifyDataSetChanged();
+                return true;
+
+            case R.id.action_modify:
+                Toast.makeText(getApplicationContext(), "공동구매 글수정 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                if (count > 0) {
+                    if (checked > -1 && checked < count) {
+                        // 아이템 수정
+                        items.set(checked, Integer.toString(checked+1) + "번 아이템 수정") ;
+
+                        // listview 갱신
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                return true;
+
+            case R.id.action_erase:
+                Toast.makeText(getApplicationContext(), "공동구매 글삭제 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                if (count > 0) {
+                    if (checked > -1 && checked < count) {
+                        // 아이템 삭제
+                        items.remove(checked) ;
+
+                        // listview 선택 초기화.
+                        listView.clearChoices();
+
+                        // listview 갱신.
+                        adapter.notifyDataSetChanged();
+                    }
+                }
+                return true;
+
+            default:
+                Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                return super.onOptionsItemSelected(item);
+        }
     }
-}
-
-class KakaoAdapter extends BaseAdapter {
-    Context context;     // 현재 화면의 제어권자
-    int layout;              // 한행을 그려줄 layout
-    ArrayList<PurchaseList> al;     // 다량의 데이터
-    LayoutInflater inf; // 화면을 그려줄 때 필요
-    public KakaoAdapter(Context context, int layout, ArrayList<PurchaseList> al) {
-        this.context = context;
-        this.layout = layout;
-        this.al = al;
-        this.inf = (LayoutInflater)context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-    @Override
-    public int getCount() { // 총 데이터의 개수를 리턴
-        return al.size();
-    }
-    @Override
-    public Object getItem(int position) { // 해당번째의 데이터 값
-        return al.get(position);
-    }
-    @Override
-    public long getItemId(int position) { // 해당번째의 고유한 id 값
-        return position;
-    }
-    @Override // 해당번째의 행에 내용을 셋팅(데이터와 레이아웃의 연결관계 정의)
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (convertView == null)
-            convertView = inf.inflate(layout, null);
-
-        ImageView iv = (ImageView)convertView.findViewById(R.id.imageView1);
-        TextView tvName=(TextView)convertView.findViewById(R.id.tvName);
-        TextView tvSex =(TextView)convertView.findViewById(R.id.tvOrigin);
-        TextView tvBirthDay=(TextView)convertView.findViewById(R.id.tvShipDate);
-
-        PurchaseList m = al.get(position);
-
-        iv.setImageResource(m.img);
-        tvName.setText(m.name);
-        tvSex.setText("거래 장소:"+m.tradeLocation);
-        tvBirthDay.setText("거래 일시:" + m.tradeDate);
-        return convertView;
-    }
-}
-
-class PurchaseList { // 자바 빈 (java Bean)
-    int img; // 사진 - res/drawable
-    String name = "";
-    String tradeLocation = "";
-    String tradeDate = "";
-
-    // 생성자가 있으면 객체 생성시 편리하다
-    public PurchaseList(int img, String name, String tradeLocation, String tradeDate) {
-        this.img = img;
-        this.name = name;
-        this.tradeLocation = tradeLocation;
-        this.tradeDate = tradeDate;
-    }
-    public PurchaseList() {}// 기존 코드와 호환을 위해서 생성자 작업시 기본생성자도 추가
+    //----------------------------------------------------------------------------------------------
 }

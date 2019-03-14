@@ -10,15 +10,23 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_settings"
-        android:title="환경설정"
-        android:icon="@drawable/baseline_settings_black_24dp"
+        android:id="@+id/action_refreshing"
+        android:title="새로고침"
+        android:icon="@drawable/baseline_cached_black_24dp"
         app:showAsAction="ifRoom"/>
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_mypage"
-        android:title="마이페이지"
+    <item android:id="@+id/action_write"
+        android:title="@string/write"
         app:showAsAction="never"/>
+
+    <item android:id="@+id/action_erase"
+        android:title="@string/erase"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_modify"
+        android:title="@string/modify"
+        app:showAsAction="never" />
 
     <item android:id="@+id/action_logout"
         android:title="@string/logout"

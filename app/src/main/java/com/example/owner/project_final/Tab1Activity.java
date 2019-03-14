@@ -58,18 +58,18 @@ public class Tab1Activity extends MainActivity {
     Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
     Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
     Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    PurchaseActivity purchaseact = (PurchaseActivity)PurchaseActivity.purchaseActivity;
+    RoomActivity roomact = (RoomActivity)RoomActivity.roomActivity;
     //----------------------------------------------------------------------------------------------
 
-    /* For Toolbar ---------------------------------------------------------------------------------
+    // For Toolbar ---------------------------------------------------------------------------------
     Toolbar toolBar;
-    ----------------------------------------------------------------------------------------------*/
+    //----------------------------------------------------------------------------------------------
 
-    /* For Navigation Drawer -----------------------------------------------------------------------
-    Intent intent;
-
+    // For Navigation Drawer -----------------------------------------------------------------------
     NavigationView navigationView;
     DrawerLayout drawerLayout;
-    ----------------------------------------------------------------------------------------------*/
+    // ---------------------------------------------------------------------------------------------
 
     int year, month, date ;
 
@@ -91,21 +91,21 @@ public class Tab1Activity extends MainActivity {
 //        tab3act.finish();
         // -----------------------------------------------------------------------------------------
 
-        /* For Toolbar -----------------------------------------------------------------------------
-        toolBar = (Toolbar)findViewById(R.id.toolbar);
+        // For Toolbar -----------------------------------------------------------------------------
+        toolBar = (Toolbar)findViewById(R.id.tab1Toolbar);
         setSupportActionBar(toolBar);
 
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setTitle("우리동네 자취생");
+        actionBar.setTitle("오늘 하루");
 
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_24dp);
-        ------------------------------------------------------------------------------------------*/
+        // -----------------------------------------------------------------------------------------
 
-        /* For Navigation Drawer -------------------------------------------------------------------
-        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
-        navigationView = (NavigationView)findViewById(R.id.navigationView);
+        // For Navigation Drawer -------------------------------------------------------------------
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_tab1);  //각 레이아웃의 가장 큰 DrawerLayout 이름
+        navigationView = (NavigationView)findViewById(R.id.navigationView_tab1);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -116,37 +116,64 @@ public class Tab1Activity extends MainActivity {
                 int id = item. getItemId();
 
                 switch (id) {
-                    case R.id.navi_tab1:
+                    case R.id.navi_tab1:    //오늘 하루
                         Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( Tab1Activity.this,Tab1Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab2:
+                    case R.id.navi_tab2:    //위치 서비스
                         Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( Tab1Activity.this,Tab2Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab3:
+                    case R.id.navi_tab3:    //게시판
                         Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( Tab1Activity.this,Tab3Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab4:
+                    case R.id.navi_tab3_1:    //공동구매 게시판
+                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab1Activity.this, PurchaseActivity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_2:    //단기방대여 게시판
+                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab1Activity.this, RoomActivity.class );
+                        startActivity(intent);
+                        break;
+/*
+                    case R.id.navi_tab3_3:    //음식주문 게시판
+                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab1Activity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_4:    //취미여가 게시판
+                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab1Activity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_5:    //자유게시판
+                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab1Activity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab4:    //음성변조
+                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab5:    //공지사항
                         Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.navi_tab5:
+                    case R.id.navi_tab6:    //마이페이지
                         Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.navi_tab6:
-                        Toast.makeText(Tab1Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
-                        break;
-
+*/
                 }
 
                 return true;
             }
         });
-        ------------------------------------------------------------------------------------------*/
+        // -----------------------------------------------------------------------------------------
 
        /* cal1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -218,12 +245,12 @@ public class Tab1Activity extends MainActivity {
         });
     }
 
-    /* For Toolbar ---------------------------------------------------------------------------------
+    // For Toolbar ---------------------------------------------------------------------------------
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
+        menuInflater.inflate(R.menu.menu, menu);    //각자에 맞는 R.menu. 파일 작성할 것
         return true;
     }
 
@@ -231,7 +258,7 @@ public class Tab1Activity extends MainActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
 
-//        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_tab1);  //각자에 맞는 레이아웃의 가장 겉 DrawerLayout 이용할 것
 
         switch (item.getItemId()) {
             case R.id.action_settings:
@@ -243,7 +270,14 @@ public class Tab1Activity extends MainActivity {
                 return true;
 
             case android.R.id.home:
-//                drawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.action_logout:
+                Toast.makeText(getApplicationContext(), "공동구매 로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent().setClass( Tab1Activity.this, LoginActivity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
                 return true;
 
             default:
@@ -251,7 +285,7 @@ public class Tab1Activity extends MainActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    ----------------------------------------------------------------------------------------------*/
+    //----------------------------------------------------------------------------------------------
 }
 
 

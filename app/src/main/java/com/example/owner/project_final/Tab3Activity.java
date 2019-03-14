@@ -1,5 +1,14 @@
 package com.example.owner.project_final;
 
+/**
+ * 2019.03.15 04:37
+ * 게시판 글 목록 보여주기, 수정, 삭제 기능
+ * 게시판 글 목록 보여줄 때, 제목, 작성자, 가격, 주소, 게시기간 보여주기
+ * 게시판 별 글쓰기 상세 변화주기
+ * 게시글 입력 시 주소는 다음 주소 API 이용하여 정확한 주소로 입력받기
+ * 게시판 글 내용 상세 보기 화면 구성
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,18 +36,18 @@ public class Tab3Activity extends MainActivity {
     Tab1Activity tab1act = (Tab1Activity)Tab1Activity.tab1Activity;
     Tab2Activity tab2act = (Tab2Activity)Tab2Activity.tab2Activity;
     Tab3Activity tab3act = (Tab3Activity)Tab3Activity.tab3Activity;
+    PurchaseActivity purchaseact = (PurchaseActivity)PurchaseActivity.purchaseActivity;
+    RoomActivity roomact = (RoomActivity)RoomActivity.roomActivity;
     //----------------------------------------------------------------------------------------------
 
-    /* For Toolbar ---------------------------------------------------------------------------------
+    // For Toolbar ---------------------------------------------------------------------------------
     Toolbar toolBar;
-    ----------------------------------------------------------------------------------------------*/
+    //----------------------------------------------------------------------------------------------
 
-    /* For Navigation Drawer -----------------------------------------------------------------------
-    Intent intent;
-
+    // For Navigation Drawer -----------------------------------------------------------------------
     NavigationView navigationView;
     DrawerLayout drawerLayout;
-    ----------------------------------------------------------------------------------------------*/
+    // ---------------------------------------------------------------------------------------------
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,21 +63,21 @@ public class Tab3Activity extends MainActivity {
 //        tab3act.finish();
         // -----------------------------------------------------------------------------------------
 
-        /* For Toolbar -----------------------------------------------------------------------------
-        toolBar = (Toolbar)findViewById(R.id.toolbar);
+        // For Toolbar -----------------------------------------------------------------------------
+        toolBar = (Toolbar)findViewById(R.id.tab3Toolbar);
         setSupportActionBar(toolBar);
 
         ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setTitle("우리동네 자취생");
+        actionBar.setTitle("게시판");
 
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.baseline_menu_black_24dp);
-        ------------------------------------------------------------------------------------------*/
+        // -----------------------------------------------------------------------------------------
 
-        /* For Navigation Drawer -------------------------------------------------------------------
-        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
-        navigationView = (NavigationView)findViewById(R.id.navigationView);
+        // For Navigation Drawer -------------------------------------------------------------------
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_tab3);  //각 레이아웃의 가장 큰 DrawerLayout 이름
+        navigationView = (NavigationView)findViewById(R.id.navigationView_tab3);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -79,44 +88,69 @@ public class Tab3Activity extends MainActivity {
                 int id = item. getItemId();
 
                 switch (id) {
-                    case R.id.navi_tab1:
+                    case R.id.navi_tab1:    //오늘 하루
                         Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( Tab3Activity.this,Tab1Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab2:
+                    case R.id.navi_tab2:    //위치 서비스
                         Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( Tab3Activity.this,Tab2Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab3:
+                    case R.id.navi_tab3:    //게시판
                         Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( Tab3Activity.this,Tab3Activity.class );
                         startActivity(intent);
                         break;
-                    case R.id.navi_tab4:
+                    case R.id.navi_tab3_1:    //공동구매 게시판
+                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab3Activity.this, PurchaseActivity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_2:    //단기방대여 게시판
+                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab3Activity.this, RoomActivity.class );
+                        startActivity(intent);
+                        break;
+/*
+                    case R.id.navi_tab3_3:    //음식주문 게시판
+                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab3Activity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_4:    //취미여가 게시판
+                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab3Activity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab3_5:    //자유게시판
+                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        intent = new Intent().setClass( Tab3Activity.this, Tab3Activity.class );
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab4:    //음성변조
+                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_tab5:    //공지사항
                         Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.navi_tab5:
+                    case R.id.navi_tab6:    //마이페이지
                         Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         break;
-                    case R.id.navi_tab6:
-                        Toast.makeText(Tab3Activity.this, item.getTitle(), Toast.LENGTH_LONG).show();
-                        break;
-
+*/
                 }
 
                 return true;
             }
         });
-        ------------------------------------------------------------------------------------------*/
+        // -----------------------------------------------------------------------------------------
 
         final Button purchaseButton = (Button) findViewById(R.id.purchaseButton); // 공동구매
         final Button foodButton = (Button) findViewById(R.id.foodButton); // 음식배달
         final Button hobbyButton = (Button) findViewById(R.id.hobbyButton); // 취미공유
         final Button roomButton = (Button) findViewById(R.id.roomButton); // 단기방대여
-        final ImageButton myButton = (ImageButton) findViewById(R.id.myButton);
-        final ImageButton writeButton = (ImageButton) findViewById(R.id.writeButton);
 
         Button noticeButton  = (Button) findViewById(R.id.noticeButton);   // 공지버튼
         final Button freeButton   = (Button)  findViewById(R.id.freeButton);    // 자유게시판 버튼
@@ -127,7 +161,7 @@ public class Tab3Activity extends MainActivity {
 
                 //다음페이지로 화면을 전환
                 //화면 전환시 사용하는 클래스
-                Intent intent1 = new Intent(Tab3Activity.this, PurchaseMapActivity.class);
+                Intent intent1 = new Intent(Tab3Activity.this, PurchaseActivity.class);
                 //화면전환하기
                 startActivity(intent1);
             }
@@ -155,22 +189,6 @@ public class Tab3Activity extends MainActivity {
             public void onClick(View v){
                 Intent intent4 = new Intent(Tab3Activity.this, HobbyActivity.class);
                 startActivity(intent4);
-            }
-        });
-
-        myButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent5 = new Intent(Tab3Activity.this, MypageActivity.class);
-                startActivity(intent5);
-            }
-        });
-
-        writeButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent6 = new Intent(Tab3Activity.this, WriteActivity.class);
-                startActivity(intent6);
             }
         });
 
@@ -226,12 +244,12 @@ public class Tab3Activity extends MainActivity {
 
     }
 
-    /* For Toolbar ---------------------------------------------------------------------------------
+    // For Toolbar ---------------------------------------------------------------------------------
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
+        menuInflater.inflate(R.menu.menu, menu);    //각자에 맞는 R.menu. 파일 작성할 것
         return true;
     }
 
@@ -239,7 +257,7 @@ public class Tab3Activity extends MainActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //return super.onOptionsItemSelected(item);
 
-//        drawerLayout = (DrawerLayout)findViewById(R.id.activity_main);
+        drawerLayout = (DrawerLayout)findViewById(R.id.activity_tab3);  //각자에 맞는 레이아웃의 가장 겉 DrawerLayout 이용할 것
 
         switch (item.getItemId()) {
             case R.id.action_settings:
@@ -251,7 +269,14 @@ public class Tab3Activity extends MainActivity {
                 return true;
 
             case android.R.id.home:
-//                drawerLayout.openDrawer(GravityCompat.START);
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+
+            case R.id.action_logout:
+                Toast.makeText(getApplicationContext(), "공동구매 로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                intent = new Intent().setClass( Tab3Activity.this, LoginActivity.class );
+                startActivity(intent);
+                overridePendingTransition(0, 0);
                 return true;
 
             default:
@@ -259,6 +284,6 @@ public class Tab3Activity extends MainActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    ----------------------------------------------------------------------------------------------*/
+    //----------------------------------------------------------------------------------------------
 
 }
