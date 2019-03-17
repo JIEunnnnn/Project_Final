@@ -52,4 +52,11 @@
     <string name="subtitle">소제목</string>
     <string name="content">내용을 입력하세요.</string>
     <string name="purchaseList">목록 보기</string>
+
+
+
+
+    <string name="default_notification_channel_id">Channel ID</string>
+
+    <string name="default_notification_channel_name" translatable="true">Test</string>
 </resources>

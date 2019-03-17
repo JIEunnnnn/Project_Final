@@ -48,10 +48,13 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText address;
 
     private Button signup;
+    public static RegisterActivity register ;
+
     //private String splash_background;
 
     //FirebaseDatabase fd;
     //DatabaseReference fdRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.parseColor(splash_background));
         }
         */
+
+        register = RegisterActivity.this;
+        final RegisterActivity  registeract = (RegisterActivity)RegisterActivity.register;
+
+
         email = (EditText)findViewById(R.id.registerActivity_edittext_email);
         password = (EditText)findViewById(R.id.registerActivity_edittext_password);
         name = (EditText)findViewById(R.id.registerActivity_edittext_name);
@@ -174,6 +182,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Intent intent = new Intent (getApplicationContext() ,LoginActivity.class);
                 startActivity(intent);
+                registeract.finish();
             }
 
         });
