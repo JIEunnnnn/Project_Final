@@ -74,7 +74,9 @@
 
     <!-- 공동구매 게시판-->
     <string name="purchaseBoard">공동구매 게시판 글쓰기</string>
-    <string name="period">게시 기간</string>
+    <string name="period">게시기간</string>
     <string name="period_day">일</string>
     <string name="roomBoard">단기방대여 게시판</string>
+    <string name="tradeLocation">거래장소</string>
+    <string name="search">검색</string>
 </resources>
