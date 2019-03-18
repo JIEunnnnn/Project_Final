@@ -49,8 +49,10 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Tab2Activity" />
         <activity android:name=".PurchaseActivity" />
+        <activity android:name=".PurchaseWriteActivity" />
         <activity android:name=".FoodActivity" />
         <activity android:name=".RoomActivity" />
+        <activity android:name=".RoomWriteActivity" />
         <activity android:name=".HobbyActivity" />
         <activity android:name=".MypageActivity" />
         <activity android:name=".WriteActivity" />

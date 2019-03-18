@@ -9,6 +9,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 2019.03.18 Run 오류로 인해 추가
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -59,6 +62,9 @@ dependencies {
     // implementation 'com.google.firebase:firebase-database:16.0.1'
 
     implementation 'com.google.firebase:firebase-config:16.4.0'
+
+    /* 2019.03.18 Run 오류로 인해 추가 */
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
 

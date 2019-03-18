@@ -117,12 +117,12 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent().setClass( MainActivity.this, PurchaseActivity.class );
                         startActivity(intent);
                         break;
-/*
                     case R.id.navi_tab3_2:    //단기방대여 게시판
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( MainActivity.this, Tab3Activity.class );
                         startActivity(intent);
                         break;
+/*
                     case R.id.navi_tab3_3:    //음식주문 게시판
                         Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_LONG).show();
                         intent = new Intent().setClass( MainActivity.this, Tab3Activity.class );
