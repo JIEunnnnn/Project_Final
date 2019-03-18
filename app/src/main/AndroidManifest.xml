@@ -40,7 +40,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".checkbox_tab1" />
+
+
+
+        <activity android:name=".checkbox_tab1"/>
         <activity android:name=".Tab1Activity" />
         <activity android:name=".Tab3Activity" />
         <activity android:name=".RegisterActivity" />
@@ -53,16 +56,14 @@
         <activity android:name=".WriteActivity" />
         <activity android:name=".FreeActivity" />
         <activity android:name=".FreeWriteActivity" />
-        <activity android:name=".freeDetailActivity" />
-        <activity android:name=".FreeredeActivity" />
-        <activity android:name=".FreereviseActivity" />
-        <activity android:name=".NoticeActivity" />
-        <activity android:name=".MyFirebaseInstanceIDService" />
-        <activity android:name=".MyFirebaseMessagingService" />
-        <activity android:name=".PurchaseMapActivity" />
+        <activity android:name=".freeDetailActivity"/>
+        <activity android:name=".FreeredeActivity"/>
+        <activity android:name=".FreereviseActivity"/>
 
-        <!--
-        <service
+        <activity android:name=".NoticeActivity"/>
+        <activity android:name=".PurchaseMapActivity"></activity>
+
+      <!-- <service
             android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -73,11 +74,23 @@
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
             </intent-filter>
-        </service> // FCM메세지 부분
-        -->
+        </service> // FCM메세지 부분 -->
 
-        <activity android:name=".PurchaseWriteActivity" />
-        <activity android:name=".RoomWriteActivity"></activity>
+
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

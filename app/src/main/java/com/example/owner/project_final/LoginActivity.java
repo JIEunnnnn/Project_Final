@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
 
-
         // For Activity finish ---------------------------------------------------------------------
         loginActivity = LoginActivity.this;
         // -----------------------------------------------------------------------------------------
@@ -69,36 +68,41 @@ public class LoginActivity extends AppCompatActivity {
         //login.setBackgroundColor(Color.parseColor(splash_background));
         //signin.setBackgroundColor(Color.parseColor(splash_background));
 
-        login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() { // 로그인버튼
             @Override
             public void onClick(View view) {
                 loginEvent();
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() { // 회원가입ㅇㅇ
             @Override
             // 클릭 시 registerIntent 를 통해서 registerActivity를 실행
             public void onClick(View view) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
+                Intent registerIntent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(registerIntent);
 
             }
         });
 
         //로그인 인터페이스 리스너
 
+
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+                // 여기서 오류나는거같다. 그 getCurrentUser()메소드는 현재 회원정보를 가져오는 메소드인데
+                // 바로가져옴으로써 자동로그인 시키는거같은데 여기서 id와 password비교하여 로그인하게끔 추가해야하지않을까?
 
                 if(user != null){
                     //로그인
+
+
                     Intent intent = new Intent(getApplicationContext() ,MainActivity.class);
                     //Intent intent = new Intent(getApplicationContext(), TActivity.class);
                     startActivity(intent);
-                  //  finish();
+                    // finish();
 
                 }else{
                     //로그아웃
@@ -109,18 +113,20 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    void loginEvent(){
-        firebaseAuth.signInWithEmailAndPassword(id.getText().toString(), password.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
-                            //로그인 실패한 부분
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
 
-                    }
-                });
+
+
+    void loginEvent() {
+        firebaseAuth.signInWithEmailAndPassword(id.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (!task.isSuccessful()) {
+                    //로그인 실패한 부분
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 
     @Override

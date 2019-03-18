@@ -53,6 +53,13 @@
     <string name="content">내용을 입력하세요.</string>
     <string name="purchaseList">목록 보기</string>
 
+
+
+
+    <string name="default_notification_channel_id">Channel ID</string>
+
+    <string name="default_notification_channel_name" translatable="true">Test</string>
+
     <!-- 게시판 더보기 -->
     <string name="write">글쓰기</string>
     <string name="erase">글삭제</string>
