@@ -48,7 +48,7 @@
             android:text="작성자" />
 
         <EditText
-            android:id="@+id/purchase_User"
+            android:id="@+id/purchase_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -69,7 +69,7 @@
             android:text="@string/password2" />
 
         <EditText
-            android:id="@+id/purchase_Pass"
+            android:id="@+id/purchase_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -120,6 +120,27 @@
             android:layout_weight="3"
             android:max="7"
             android:min="1"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/post_price_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="거래가격" />
+
+        <EditText
+            android:id="@+id/purchase_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/price"/>
     </LinearLayout>
 
 
