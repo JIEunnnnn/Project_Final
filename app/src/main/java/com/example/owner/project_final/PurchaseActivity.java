@@ -19,6 +19,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.ArrayList;
 
 public class PurchaseActivity extends AppCompatActivity {
@@ -54,6 +61,11 @@ public class PurchaseActivity extends AppCompatActivity {
     static int count, checked;
     // ---------------------------------------------------------------------------------------------
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference purRef = db.collection("purchase");
+
+
+    String title, contents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,13 +178,43 @@ public class PurchaseActivity extends AppCompatActivity {
         // 빈 데이터 리스트 생성.
         items = new ArrayList<String>() ;
         // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_single_choice, items) ;
+
 
         // listview 생성 및 adapter 지정.
         listView = (ListView)findViewById(R.id.purchaseListView);    //해당 리스트뷰 이름
         listView.setAdapter(adapter);
 
-        count = adapter.getCount();
+        purRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for(QueryDocumentSnapshot document : task.getResult()) {
+                        System.out.println("성공" + document.getData());
+
+
+                        title = document.getString("title");
+                        items.add(title);
+
+                        
+
+                    }
+
+                }else{
+                    System.out.println("구매게시판불러오기실패");
+
+                }
+
+                adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_single_choice, items) ;
+                count = adapter.getCount();
+
+            }
+
+
+        });
+
+
+
+
         checked = listView.getCheckedItemPosition();
 /*
         // add button에 대한 이벤트 처리.
@@ -253,6 +295,7 @@ public class PurchaseActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout)findViewById(R.id.activity_purchase);
 
+
         // For ListView ----------------------------------------------------------------------------
         //count = adapter.getCount();
         //checked = listView.getCheckedItemPosition();
@@ -270,7 +313,8 @@ public class PurchaseActivity extends AppCompatActivity {
             case R.id.action_refreshing:
                 Toast.makeText(getApplicationContext(), "새로고침 버튼 클릭됨", Toast.LENGTH_LONG).show();
                 intent = new Intent(PurchaseActivity.this, PurchaseActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                //ntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                adapter.notifyDataSetChanged(); // 화면전환,...
                 startActivity(intent);
                 return true;
 
@@ -294,7 +338,7 @@ public class PurchaseActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
 
                 // 아이템 추가.
-                items.add("LIST" + Integer.toString(count + 1));
+             //  items.add("LIST" + Integer.toString(count + 1));
 
                 // listview 갱신
                 adapter.notifyDataSetChanged();
