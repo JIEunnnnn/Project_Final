@@ -8,6 +8,11 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--블루투스관련 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <!--
      PlacesAPI Exercise
         https://webnautes.tistory.com/1080
@@ -63,6 +68,8 @@
         <activity android:name=".FreereviseActivity"/>
 
         <activity android:name=".NoticeActivity"/>
+
+        <activity android:name=".BluetoothLED" />
 
         <!-- <service
               android:name=".MyFirebaseMessagingService">

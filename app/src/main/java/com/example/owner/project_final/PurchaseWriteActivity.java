@@ -58,8 +58,8 @@ public class PurchaseWriteActivity extends AppCompatActivity {
         cancle = (Button)findViewById(R.id.cancelButton_purchase);
 
         purchase_title = (EditText)findViewById(R.id.purchase_title);
-        purchase_User = (EditText)findViewById(R.id.purchase_User);
-        purchase_Pass = (EditText)findViewById(R.id.purchase_Pass);
+        purchase_User = (EditText)findViewById(R.id.purchase_user);
+        purchase_Pass = (EditText)findViewById(R.id.purchase_pass);
         purchase_tradelocation = (EditText) findViewById(R.id.purchase_tradelocation);
         purchase_Contents = (EditText) findViewById(R.id.purchase_Contents);
 

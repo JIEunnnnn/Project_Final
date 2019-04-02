@@ -237,15 +237,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-/*
+
         btn_fourth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent().setClass( MainActivity.this,Tab1Activity.class );
+                intent = new Intent().setClass( MainActivity.this,BluetoothLED.class );
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
         });
+
+        /*
 
         btn_fifth.setOnClickListener(new View.OnClickListener() {
             @Override
