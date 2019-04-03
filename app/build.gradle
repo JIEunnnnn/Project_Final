@@ -73,6 +73,8 @@ dependencies {
     //[오투잡] 2019.04.02 View Binding 을 위해 사용
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+
+    implementation 'com.google.android.gms:play-services-auth:16.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
