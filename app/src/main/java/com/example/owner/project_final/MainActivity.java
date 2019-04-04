@@ -29,9 +29,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     Intent intent;
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     // For Activity finish -------------------------------------------------------------------------
     public static Activity mainActivity;
@@ -301,7 +306,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_logout:
-                Toast.makeText(getApplicationContext(), "공동구매 로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                if(user != null){
+                    Toast.makeText(getApplicationContext(), "로그아웃 버튼 클릭됨", Toast.LENGTH_LONG).show();
+                    FirebaseAuth.getInstance().signOut();
+                }else{
+                    Toast.makeText(getApplicationContext(), "로그아웃실패", Toast.LENGTH_LONG).show();
+                }
+
+
+
                 intent = new Intent().setClass( MainActivity.this, LoginActivity.class );
                 startActivity(intent);
                 overridePendingTransition(0, 0);
