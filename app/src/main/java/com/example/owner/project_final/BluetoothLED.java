@@ -230,6 +230,7 @@ public class BluetoothLED extends AppCompatActivity {
         finish();
     }
 
+    // 추상클래스인 Thread 를 상속하여, ConnectedThread 구현 = 블루투스 통신을 주고받기 위한 클래스 (입출력 스트림을 통해)
     private class ConnectedThread extends Thread {
         private final BluetoothSocket mmSocket;
         private  final InputStream mmInStream ;
