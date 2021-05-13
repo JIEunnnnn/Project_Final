@@ -107,7 +107,7 @@ public class BluetoothLED extends AppCompatActivity {
         };
 
         btadapter = BluetoothAdapter.getDefaultAdapter();
-        checkBTState(); // 메소드
+        checkBTState(); // 해당기기가 블루투스 통신을 지원하는지, 지원한다면 활성화하는 메소드 
 
 
         red.setOnClickListener(new View.OnClickListener() {
